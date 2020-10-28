@@ -11,6 +11,28 @@ export class DiscPage {
     initialSlide: 1,
     speed: 400
   };
-  constructor() {}
+  flipcardD: boolean;
+  flipcardI: boolean;
+  flipcardS: boolean;
+  flipcardC: boolean;
+  constructor() {
+    this.flipcardD = false;
+    this.flipcardI = false;
+    this.flipcardS = false;
+    this.flipcardC = false;
+  }
+
+  flipCardDominance(){
+    this.flipcardD = !this.flipcardD;
+  }
+  flipCardInfluence(){
+    this.flipcardI = !this.flipcardI;
+  }
+  flipCardStabilite(){
+    this.flipcardS = !this.flipcardS;
+  }
+  flipCardConformite(){
+    this.flipcardC = !this.flipcardC;
+  }
 
 }

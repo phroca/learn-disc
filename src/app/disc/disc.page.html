@@ -14,127 +14,268 @@
     </ion-header>
     <ion-slides pager="true" [options]="slideOpts">
         <ion-slide>
-            <h1>PRESENTATION</h1>
+            <img src="../../assets/img/disc-presentation.png" alt="disc-presentation" width="200px">
         </ion-slide>
         <ion-slide>
-            <ion-card>
-                <ion-card-header>
-                    <ion-card-subtitle>DISC</ion-card-subtitle>
-                    <ion-card-title>Dominance</ion-card-title>
-                </ion-card-header>
-
-                <ion-card-content>
-                    <ion-item class="ion-activated">
-                        <ion-label>Point d'appui</ion-label>
-                        <ion-label>TEst</ion-label>
-                    </ion-item>
-
-                    <ion-item>
-                        <ion-label>Limites</ion-label>
-                        <ion-label>Card Link Item 2</ion-label>
-                    </ion-item>
-
-                    <ion-item class="ion-activated">
-                        <ion-label>Limites</ion-label>
-                        <ion-label>Card Button Item 1 activated</ion-label>
-                    </ion-item>
-
-                    <ion-item>
-                        <ion-label>Limites</ion-label>
-                        <ion-label>Card Button Item 2</ion-label>
-                    </ion-item>
-                </ion-card-content>
-            </ion-card>
+            <div class="scene" (click)="flipCardDominance()">
+                <div class="card dominance" [ngClass]="{ 'is-flipped': flipcardD }">
+                    <div class="card-face front">
+                        <ion-card>
+                            <ion-card-header style="background-color: red;">
+                                <ion-card-subtitle class="font-white">DISC</ion-card-subtitle>
+                                <ion-card-title class="font-white">Dominance</ion-card-title>
+                            </ion-card-header>
+                            <ion-card-content style="height: 350px;">
+                                <ion-icon name="help-outline" style="width: 60%;height: 60%;margin: 50px auto;" title=""></ion-icon>
+                            </ion-card-content>
+                        </ion-card>
+                    </div>
+                    <div class="card-face back">
+                        <ion-card>
+                            <ion-card-header style="background-color: red;">
+                                <ion-card-subtitle class="font-white">DISC</ion-card-subtitle>
+                                <ion-card-title class="font-white">Dominance</ion-card-title>
+                            </ion-card-header>
+                            <ion-card-content>
+                                <ion-item>
+                                    <ion-label>Point d'appui</ion-label>
+                                    <ion-chip color="danger">
+                                        <ion-label>Déterminé</ion-label>
+                                    </ion-chip>
+                                    <ion-chip color="danger">
+                                        <ion-label>Pionnier</ion-label>
+                                    </ion-chip>
+                                    <ion-chip color="danger">
+                                        <ion-label>Compétiteur</ion-label>
+                                    </ion-chip>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label>Limites</ion-label>
+                                    <ion-chip color="danger">
+                                        <ion-label>Impatient</ion-label>
+                                    </ion-chip>
+                                    <ion-chip color="danger">
+                                        <ion-label>Écoute peu</ion-label>
+                                    </ion-chip>
+                                    <ion-chip color="danger">
+                                        <ion-label>Insensible aux autres.</ion-label>
+                                    </ion-chip>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label>Besoins</ion-label>
+                                    <ion-chip color="danger">
+                                        <ion-label>Dominer.</ion-label>
+                                    </ion-chip>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label>Moteurs</ion-label>
+                                    <ion-chip color="danger">
+                                        <ion-label>Défis personnels.</ion-label>
+                                    </ion-chip>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label>Peur</ion-label>
+                                    <ion-chip color="danger">
+                                        <ion-label>Qu’on profite de sa dynamique.</ion-label>
+                                    </ion-chip>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label>Irrité par</ion-label>
+                                    <ion-chip color="danger">
+                                        <ion-label>L’indécision.</ion-label>
+                                    </ion-chip>
+                                    <ion-chip color="danger">
+                                        <ion-label>L’inefficacité.</ion-label>
+                                    </ion-chip>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label>Sous stress</ion-label>
+                                    <ion-chip color="danger">
+                                        <ion-label>Dictatorial</ion-label>
+                                    </ion-chip>
+                                    <ion-chip color="danger">
+                                        <ion-label>Provocant</ion-label>
+                                    </ion-chip>
+                                    <ion-chip color="danger">
+                                        <ion-label>Passe en Urgence</ion-label>
+                                    </ion-chip>
+                                </ion-item>
+                            </ion-card-content>
+                        </ion-card>
+                    </div>
+                </div>
+            </div>
         </ion-slide>
         <ion-slide>
-            <ion-card>
-                <ion-card-header>
-                    <ion-card-subtitle>DISC</ion-card-subtitle>
-                    <ion-card-title>Influence</ion-card-title>
-                </ion-card-header>
+            <div class="scene" (click)="flipCardInfluence()">
+                <div class="card influence" [ngClass]="{ 'is-flipped': flipcardI }">
+                    <div class="card-face front">
+                        <ion-card>
+                            <ion-card-header style="background-color: #FFD800;">
+                                <ion-card-subtitle class="font-white">DISC</ion-card-subtitle>
+                                <ion-card-title class="font-white">Influence</ion-card-title>
+                            </ion-card-header>
+                            <ion-card-content style="height: 350px;">
+                                <ion-icon name="help-outline" style="width: 60%;height: 60%;margin: 50px auto;"></ion-icon>
+                            </ion-card-content>
+                        </ion-card>
+                    </div>
+                    <div class="card-face back">
+                        <ion-card>
+                            <ion-card-header style="background-color: #FFD800;">
+                                <ion-card-subtitle class="font-white">DISC</ion-card-subtitle>
+                                <ion-card-title class="font-white">Influence</ion-card-title>
+                            </ion-card-header>
+                            <ion-card-content>
+                                <ion-item>
+                                    <ion-label>Point d'appui</ion-label>
+                                    <ion-label>Déterminé, Pionnier, Compétiteur</ion-label>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label>Limites</ion-label>
+                                    <ion-label>Impatient, écoute peu, insensible aux autres.</ion-label>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label>Besoins</ion-label>
+                                    <ion-label>Dominer.</ion-label>
+                                </ion-item>
 
-                <ion-card-content>
-                    <ion-item class="ion-activated">
-                        <ion-label>Point d'appui</ion-label>
-                        <ion-label>TEst</ion-label>
-                    </ion-item>
+                                <ion-item>
+                                    <ion-label>Moteurs</ion-label>
+                                    <ion-label>Défis personnels.</ion-label>
+                                </ion-item>
 
-                    <ion-item>
-                        <ion-label>Limites</ion-label>
-                        <ion-label>Card Link Item 2</ion-label>
-                    </ion-item>
-
-                    <ion-item class="ion-activated">
-                        <ion-label>Limites</ion-label>
-                        <ion-label>Card Button Item 1 activated</ion-label>
-                    </ion-item>
-
-                    <ion-item>
-                        <ion-label>Limites</ion-label>
-                        <ion-label>Card Button Item 2</ion-label>
-                    </ion-item>
-                </ion-card-content>
-            </ion-card>
+                                <ion-item>
+                                    <ion-label>Peur</ion-label>
+                                    <ion-label>Qu’on profite de sa dynamique.</ion-label>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label>Irrité par</ion-label>
+                                    <ion-label>L’indécision, l’inefficacité.</ion-label>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label>Spus stress</ion-label>
+                                    <ion-label>Dictatorial, provocant, Passe en Urgence</ion-label>
+                                </ion-item>
+                            </ion-card-content>
+                        </ion-card>
+                    </div>
+                </div>
+            </div>
         </ion-slide>
         <ion-slide>
-            <ion-card>
-                <ion-card-header>
-                    <ion-card-subtitle>DISC</ion-card-subtitle>
-                    <ion-card-title>Stabilité</ion-card-title>
-                </ion-card-header>
+            <div class="scene" (click)="flipCardStabilite()">
+                <div class="card stabilite" [ngClass]="{ 'is-flipped': flipcardS }">
+                    <div class="card-face front">
+                        <ion-card>
+                            <ion-card-header style="background-color: green;">
+                                <ion-card-subtitle class="font-white">DISC</ion-card-subtitle>
+                                <ion-card-title class="font-white">Stabilité</ion-card-title>
+                            </ion-card-header>
+                            <ion-card-content style="height: 350px;">
+                                <ion-icon name="help-outline" style="width: 60%;height: 60%;margin: 50px auto;"></ion-icon>
+                            </ion-card-content>
+                        </ion-card>
+                    </div>
+                    <div class="card-face back">
+                        <ion-card>
+                            <ion-card-header style="background-color: green;">
+                                <ion-card-subtitle class="font-white">DISC</ion-card-subtitle>
+                                <ion-card-title class="font-white">Stabilité</ion-card-title>
+                            </ion-card-header>
+                            <ion-card-content>
+                                <ion-item>
+                                    <ion-label>Point d'appui</ion-label>
+                                    <ion-label>Déterminé, Pionnier, Compétiteur</ion-label>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label>Limites</ion-label>
+                                    <ion-label>Impatient, écoute peu, insensible aux autres.</ion-label>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label>Besoins</ion-label>
+                                    <ion-label>Dominer.</ion-label>
+                                </ion-item>
 
-                <ion-card-content>
-                    <ion-item class="ion-activated">
-                        <ion-label>Point d'appui</ion-label>
-                        <ion-label>TEst</ion-label>
-                    </ion-item>
+                                <ion-item>
+                                    <ion-label>Moteurs</ion-label>
+                                    <ion-label>Défis personnels.</ion-label>
+                                </ion-item>
 
-                    <ion-item>
-                        <ion-label>Limites</ion-label>
-                        <ion-label>Card Link Item 2</ion-label>
-                    </ion-item>
-
-                    <ion-item class="ion-activated">
-                        <ion-label>Limites</ion-label>
-                        <ion-label>Card Button Item 1 activated</ion-label>
-                    </ion-item>
-
-                    <ion-item>
-                        <ion-label>Limites</ion-label>
-                        <ion-label>Card Button Item 2</ion-label>
-                    </ion-item>
-                </ion-card-content>
-            </ion-card>
+                                <ion-item>
+                                    <ion-label>Peur</ion-label>
+                                    <ion-label>Qu’on profite de sa dynamique.</ion-label>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label>Irrité par</ion-label>
+                                    <ion-label>L’indécision, l’inefficacité.</ion-label>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label>Spus stress</ion-label>
+                                    <ion-label>Dictatorial, provocant, Passe en Urgence</ion-label>
+                                </ion-item>
+                            </ion-card-content>
+                        </ion-card>
+                    </div>
+                </div>
+            </div>
         </ion-slide>
         <ion-slide>
-            <ion-card>
-                <ion-card-header>
-                    <ion-card-subtitle>DISC</ion-card-subtitle>
-                    <ion-card-title>Conformité</ion-card-title>
-                </ion-card-header>
+            <div class="scene" (click)="flipCardConformite()">
+                <div class="card conformite" [ngClass]="{ 'is-flipped': flipcardC }">
+                    <div class="card-face front">
+                        <ion-card>
+                            <ion-card-header style="background-color: blue;">
+                                <ion-card-subtitle class="font-white">DISC</ion-card-subtitle>
+                                <ion-card-title class="font-white">Conformité</ion-card-title>
+                            </ion-card-header>
+                            <ion-card-content style="height: 350px;">
+                                <ion-icon name="help-outline" style="width: 60%;height: 60%;margin: 50px auto;"></ion-icon>
+                            </ion-card-content>
+                        </ion-card>
+                    </div>
+                    <div class="card-face back">
+                        <ion-card>
+                            <ion-card-header style="background-color: blue;">
+                                <ion-card-subtitle class="font-white">DISC</ion-card-subtitle>
+                                <ion-card-title class="font-white">Conformité</ion-card-title>
+                            </ion-card-header>
+                            <ion-card-content>
+                                <ion-item>
+                                    <ion-label>Point d'appui</ion-label>
+                                    <ion-label>Déterminé, Pionnier, Compétiteur</ion-label>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label>Limites</ion-label>
+                                    <ion-label>Impatient, écoute peu, insensible aux autres.</ion-label>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label>Besoins</ion-label>
+                                    <ion-label>Dominer.</ion-label>
+                                </ion-item>
 
-                <ion-card-content>
-                    <ion-item class="ion-activated">
-                        <ion-label>Point d'appui</ion-label>
-                        <ion-label>TEst</ion-label>
-                    </ion-item>
+                                <ion-item>
+                                    <ion-label>Moteurs</ion-label>
+                                    <ion-label>Défis personnels.</ion-label>
+                                </ion-item>
 
-                    <ion-item>
-                        <ion-label>Limites</ion-label>
-                        <ion-label>Card Link Item 2</ion-label>
-                    </ion-item>
-
-                    <ion-item class="ion-activated">
-                        <ion-label>Limites</ion-label>
-                        <ion-label>Card Button Item 1 activated</ion-label>
-                    </ion-item>
-
-                    <ion-item>
-                        <ion-label>Limites</ion-label>
-                        <ion-label>Card Button Item 2</ion-label>
-                    </ion-item>
-                </ion-card-content>
-            </ion-card>
+                                <ion-item>
+                                    <ion-label>Peur</ion-label>
+                                    <ion-label>Qu’on profite de sa dynamique.</ion-label>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label>Irrité par</ion-label>
+                                    <ion-label>L’indécision, l’inefficacité.</ion-label>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label>Spus stress</ion-label>
+                                    <ion-label>Dictatorial, provocant, Passe en Urgence</ion-label>
+                                </ion-item>
+                            </ion-card-content>
+                        </ion-card>
+                    </div>
+                </div>
+            </div>
         </ion-slide>
     </ion-slides>
 </ion-content>
