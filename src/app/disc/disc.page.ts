@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class DiscPage {
   // Paramètres optionnelles pour le composant slider
   slideOpts = {
-    initialSlide: 1,
+    initialSlide: 0,
     speed: 400
   };
   flipcardD: boolean;

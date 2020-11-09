@@ -1,0 +1,89 @@
+[{
+    "titre": "Dominance",
+    "pointAppui": ["Déterminé",
+        "Pionnier",
+        "Compétiteur"
+    ],
+    "limites": ["Impatient",
+        "Écoute peu",
+        "Insensible aux autres"
+    ],
+    "besoins": ["Dominer"],
+    "moteurs": ["Défis personnels"],
+    "peur": ["Qu’on profite de sa dynamique"],
+    "irritePar": ["L’indécision",
+        "L’inefficacité"
+    ],
+    "sousStress": ["Dictatorial",
+        "Provocant",
+        "Passe en Urgence"
+    ]
+}, {
+    "titre": "Influence",
+    "pointAppui": ["Expressif",
+        "divertissant",
+        "optimiste"
+    ],
+    "limites": ["Durée d’attention limitée",
+        "désorganisé",
+        "peu persévérant",
+        "inattentif aux détails"
+    ],
+    "besoins": ["Interagir"],
+    "moteurs": ["Être reconnu par les autres"],
+    "peur": ["Être rejeté par les autres"],
+    "irritePar": ["La Routine",
+        "la complexité"
+    ],
+    "sousStress": ["Caustique",
+        "Décision Impulsive",
+        "manque de discernement",
+        "change de décision"
+    ]
+}, {
+    "titre": "Stabilité",
+    "pointAppui": ["Fiable",
+        "aimable",
+        "constant",
+        "loyal"
+    ],
+    "limites": ["N’aime pas le changement",
+        "sensibilité exacerbée",
+        "manque de perspective globale"
+    ],
+    "besoins": ["Régularité"],
+    "moteurs": ["Servir",
+        "être utile"
+    ],
+    "peur": ["Le changement"],
+    "irritePar": ["L’impatience",
+        "le conflit"
+    ],
+    "sousStress": ["Sévère",
+        "sédentaire",
+        "se soumet",
+        "évite les responsabilités"
+    ]
+}, {
+    "titre": "Conformité",
+    "pointAppui": ["Analytique",
+        "précis",
+        "réservé",
+        "réfléchi"
+    ],
+    "limites": ["Critique",
+        "indifférent",
+        "perfectionniste"
+    ],
+    "besoins": ["D’avoir des standards"],
+    "moteurs": ["La bonne façon d’agir"],
+    "peur": ["Qu’on critique son travail"],
+    "irritePar": ["Les intrusions",
+        "le manque d’organisation"
+    ],
+    "sousStress": ["Critique",
+        "insensible",
+        "fuyant",
+        "paralysie décisionnelle"
+    ]
+}]
