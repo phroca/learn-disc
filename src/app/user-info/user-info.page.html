@@ -5,11 +5,86 @@
         </ion-title>
     </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
-    <ion-header collapse="condense">
-        <ion-toolbar>
-            <ion-title size="large">Infos Utilisateur</ion-title>
-        </ion-toolbar>
-    </ion-header>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-card>
+                    <ion-card-header color="dark">
+                        <ion-card-subtitle>Progression</ion-card-subtitle>
+                        <ion-card-title>67</ion-card-title>
+                    </ion-card-header>
+                    <ion-item color="dark">
+                        <ion-button color="light" fill="outline" slot="end">View</ion-button>
+                    </ion-item>
+
+                </ion-card>
+            </ion-col>
+            <ion-col>
+                <ion-card>
+                    <ion-card-header>
+                        <ion-card-subtitle>Progression</ion-card-subtitle>
+                        <ion-card-title>67</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content>
+                        <canvas #barChart></canvas>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-card>
+                    <ion-card-header color="success">
+                        <ion-card-subtitle>Nombre de réussite</ion-card-subtitle>
+                        <ion-card-title>54</ion-card-title>
+                    </ion-card-header>
+                </ion-card>
+            </ion-col>
+            <ion-col>
+                <ion-card>
+                    <ion-card-header color="danger">
+                        <ion-card-subtitle>Nombre d'échecs</ion-card-subtitle>
+                        <ion-card-title>13</ion-card-title>
+                    </ion-card-header>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-card>
+                    <ion-card-header color="danger">
+                        <ion-card-subtitle>Dominance</ion-card-subtitle>
+                        <ion-card-title>30</ion-card-title>
+                    </ion-card-header>
+                </ion-card>
+            </ion-col>
+            <ion-col>
+                <ion-card>
+                    <ion-card-header color="warning">
+                        <ion-card-subtitle>Influence</ion-card-subtitle>
+                        <ion-card-title>14</ion-card-title>
+                    </ion-card-header>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-card>
+                    <ion-card-header color="success">
+                        <ion-card-subtitle>Stabilité</ion-card-subtitle>
+                        <ion-card-title>17</ion-card-title>
+                    </ion-card-header>
+                </ion-card>
+            </ion-col>
+            <ion-col>
+                <ion-card>
+                    <ion-card-header color="primary">
+                        <ion-card-subtitle>Conformité</ion-card-subtitle>
+                        <ion-card-title>6</ion-card-title>
+                    </ion-card-header>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>
