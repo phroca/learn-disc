@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: '',
     component: QuizPage,
+  },
+  {
+    path: 'quiz-element',
+    loadChildren: () => import('../quiz/quiz-element/quiz-element.module').then(m => m.QuizElementModule)
   }
 ];
 
