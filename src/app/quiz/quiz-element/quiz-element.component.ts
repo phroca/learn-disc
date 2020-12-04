@@ -5,6 +5,9 @@ import * as disc from '../../data/disc.json';
 import * as discRawJson from '../../data/disc-raw.json';
 import { Disc } from '../../model/disc';
 import { ActivatedRoute, Router } from '@angular/router';
+import { get, set } from '../../services/storage.service';
+import { VirtualTimeScheduler } from 'rxjs';
+import { InfosQuestionnaire } from 'src/app/model/infos-questionnaire';
 
 @Component({
   selector: 'app-quiz-element',
@@ -29,19 +32,26 @@ export class QuizElementComponent implements OnInit {
     autoHeight: true,
     simulateTouch: false
   };
+
+  // Structure d'information pour les infos utilisateurs
+  infosQuestionnaire: InfosQuestionnaire;
+
   constructor(private route: ActivatedRoute, private router: Router) {
     this.disc = [];
     this.discTemporaire = new Disc();
     this.discRaw = new DiscRaw();
     this.scoreTotal = 0;
+    this.infosQuestionnaire = new InfosQuestionnaire();
   }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       const test = params.state;
       const navParams = this.router.getCurrentNavigation().extras.state;
-      this.discChoisi = navParams.quizName;
-});
+      if (navParams) {
+        this.discChoisi = navParams.quizName;
+      }
+    });
     // ITITIALISATION DES ELEMENTS DU DISC
     this.listDisc.forEach(element => {
       const discTemp = new Disc();
@@ -58,6 +68,7 @@ export class QuizElementComponent implements OnInit {
     );
     this.discTemporaire = this.disc.find(discElement => discElement.titre === this.discChoisi);
     this.initialiserQuiz();
+    this.initialiserInfosUtilisateurQuiz();
   }
 
 
@@ -207,6 +218,51 @@ export class QuizElementComponent implements OnInit {
     this.shuffle(this.discRaw.sousStress);
   }
 
+  /**
+   * Récupère les informations utilisateur sur le thème choisi
+   */
+  initialiserInfosUtilisateurQuiz() {
+    get('infos-' + this.discChoisi).then(valeur => {
+      if (valeur != null) {
+        this.infosQuestionnaire = {
+          discChoisi: valeur.discChoisi,
+          reponsePointAppui: {
+            bonne: valeur.reponsePointAppui.bonne,
+            mauvaise: valeur.reponsePointAppui.mauvaise
+          },
+          reponseLimites: {
+            bonne: valeur.reponseLimites.bonne,
+            mauvaise: valeur.reponseLimites.mauvaise
+          },
+          reponseBesoins: {
+            bonne: valeur.reponseBesoins.bonne,
+            mauvaise: valeur.reponseBesoins.mauvaise
+          },
+          reponseMoteurs: {
+            bonne: valeur.reponseMoteurs.bonne,
+            mauvaise: valeur.reponseMoteurs.mauvaise
+          },
+          reponsePeur: {
+            bonne: valeur.reponsePeur.bonne,
+            mauvaise: valeur.reponsePeur.mauvaise
+          },
+          reponseIrritePar: {
+            bonne: valeur.reponseIrritePar.bonne,
+            mauvaise: valeur.reponseIrritePar.mauvaise
+          },
+          reponseSousStress: {
+            bonne: valeur.reponseSousStress.bonne,
+            mauvaise: valeur.reponseSousStress.mauvaise
+          }
+         };
+      } else {
+        this.infosQuestionnaire.discChoisi = this.discChoisi;
+      }
+    });
+
+  }
+
+
   suivantPA() {
     let acceptingAnswer: boolean;
     const listReponses = this.discRaw.pointAppui.filter(pa =>
@@ -215,12 +271,14 @@ export class QuizElementComponent implements OnInit {
     for (const reponse of listReponses) {
       if (this.discTemporaire.pointAppui.find(dtpa => dtpa === reponse.valeur) == null) {
         acceptingAnswer = false;
+        this.infosQuestionnaire.reponsePointAppui.mauvaise++;
         break;
       } else {
         acceptingAnswer = true;
       }
     }
     if (acceptingAnswer) {
+      this.infosQuestionnaire.reponsePointAppui.bonne++;
       this.scoreTotal++;
     }
     this.slides.slideNext();
@@ -233,6 +291,7 @@ export class QuizElementComponent implements OnInit {
     );
     for (const reponse of listReponses) {
       if (this.discTemporaire.limites.find(dtl => dtl === reponse.valeur) == null) {
+        this.infosQuestionnaire.reponseLimites.mauvaise++;
         acceptingAnswer = false;
         break;
       } else {
@@ -240,16 +299,19 @@ export class QuizElementComponent implements OnInit {
       }
     }
     if (acceptingAnswer) {
+      this.infosQuestionnaire.reponseLimites.bonne++;
       this.scoreTotal++;
     }
     this.slides.slideNext();
   }
+
   suivantB() {
     let acceptingAnswer: boolean;
     const listReponses = this.discRaw.besoins.filter(b =>
       b.isChecked === true);
     for (const reponse of listReponses) {
       if (this.discTemporaire.besoins.find(dtb => dtb === reponse.valeur) == null) {
+        this.infosQuestionnaire.reponseBesoins.mauvaise++;
         acceptingAnswer = false;
         break;
       } else {
@@ -257,16 +319,19 @@ export class QuizElementComponent implements OnInit {
       }
     }
     if (acceptingAnswer) {
+      this.infosQuestionnaire.reponseBesoins.bonne++;
       this.scoreTotal++;
     }
     this.slides.slideNext();
   }
+
   suivantM() {
     let acceptingAnswer: boolean;
     const listReponses = this.discRaw.moteurs.filter(m =>
       m.isChecked === true);
     for (const reponse of listReponses) {
       if (this.discTemporaire.moteurs.find(dtm => dtm === reponse.valeur) == null) {
+        this.infosQuestionnaire.reponseMoteurs.bonne++;
         acceptingAnswer = false;
         break;
       } else {
@@ -274,10 +339,12 @@ export class QuizElementComponent implements OnInit {
       }
     }
     if (acceptingAnswer) {
+      this.infosQuestionnaire.reponseMoteurs.mauvaise++;
       this.scoreTotal++;
     }
     this.slides.slideNext();
   }
+
   suivantP() {
     let acceptingAnswer: boolean;
     const listReponses = this.discRaw.peur.filter(p =>
@@ -285,6 +352,7 @@ export class QuizElementComponent implements OnInit {
     );
     for (const reponse of listReponses) {
       if (this.discTemporaire.peur.find(dtp => dtp === reponse.valeur) == null) {
+        this.infosQuestionnaire.reponsePeur.mauvaise++;
         acceptingAnswer = false;
         break;
       } else {
@@ -292,10 +360,12 @@ export class QuizElementComponent implements OnInit {
       }
     }
     if (acceptingAnswer) {
+      this.infosQuestionnaire.reponsePeur.bonne++;
       this.scoreTotal++;
     }
     this.slides.slideNext();
   }
+
   suivantI() {
     let acceptingAnswer: boolean;
     const listReponses = this.discRaw.irritePar.filter(i =>
@@ -303,6 +373,7 @@ export class QuizElementComponent implements OnInit {
     );
     for (const reponse of listReponses) {
       if (this.discTemporaire.irritePar.find(dti => dti === reponse.valeur) == null) {
+        this.infosQuestionnaire.reponseIrritePar.mauvaise++;
         acceptingAnswer = false;
         break;
       } else {
@@ -310,10 +381,12 @@ export class QuizElementComponent implements OnInit {
       }
     }
     if (acceptingAnswer) {
+      this.infosQuestionnaire.reponseIrritePar.bonne++;
       this.scoreTotal++;
     }
     this.slides.slideNext();
   }
+
   suivantS() {
     let acceptingAnswer: boolean;
     const listReponses = this.discRaw.sousStress.filter(s =>
@@ -321,6 +394,7 @@ export class QuizElementComponent implements OnInit {
     );
     for (const reponse of listReponses) {
       if (this.discTemporaire.sousStress.find(dts => dts === reponse.valeur) == null) {
+        this.infosQuestionnaire.reponseSousStress.mauvaise++;
         acceptingAnswer = false;
         break;
       } else {
@@ -328,9 +402,11 @@ export class QuizElementComponent implements OnInit {
       }
     }
     if (acceptingAnswer) {
+      this.infosQuestionnaire.reponseSousStress.bonne++;
       this.scoreTotal++;
     }
     this.slides.slideNext();
+    set('infos-' + this.discChoisi, this.infosQuestionnaire);
   }
 
 
@@ -338,6 +414,7 @@ export class QuizElementComponent implements OnInit {
     this.discRaw = new DiscRaw();
     this.scoreTotal = 0;
     this.initialiserQuiz();
+    this.initialiserInfosUtilisateurQuiz();
     this.slides.slideTo(0);
   }
 

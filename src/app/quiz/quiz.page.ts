@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras } from '@angular/router';
-import {  NavController } from '@ionic/angular';
-
+import { NavController } from '@ionic/angular';
+import { timeStamp } from 'console';
+import { get, set } from '../services/storage.service';
 
 @Component({
   selector: 'app-quiz',
@@ -35,9 +36,20 @@ export class QuizPage implements OnInit{
       color: '#FFD439'
     }
   ];
-  constructor(private navCtrl: NavController) { }
+  nombreQuizzText: number;
+  TotalQuiz: number;
+  constructor(private navCtrl: NavController) {
+    this.nombreQuizzText = 0;
+    this.TotalQuiz = 0;
+   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    get('Progression').then(value => {
+      if (value) {
+        this.TotalQuiz = value;
+      }
+    });
+  }
 
   gotoquiz(quizTitle: string) {
     const quiz = this.quizList.find(elt => elt.title === quizTitle);
@@ -46,7 +58,21 @@ export class QuizPage implements OnInit{
         quizName: quiz.title
       }
     };
+    this.enregistrerQuizzBdd(quiz.title);
     this.navCtrl.navigateForward('/tabs/quiz/quiz-element', navigationExtras);
+  }
+
+  enregistrerQuizzBdd(titre: string){
+    get(titre).then(value => {
+      if (value) {
+        this.nombreQuizzText = value + 1;
+      } else {
+        this.nombreQuizzText++;
+      }
+      set(titre, this.nombreQuizzText);
+    });
+    this.TotalQuiz++;
+    set('Progression', this.TotalQuiz);
   }
 
 }

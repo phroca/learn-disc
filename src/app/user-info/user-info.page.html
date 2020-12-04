@@ -12,7 +12,7 @@
                 <ion-card>
                     <ion-card-header color="dark">
                         <ion-card-subtitle>Progression</ion-card-subtitle>
-                        <ion-card-title>67</ion-card-title>
+                        <ion-card-title>{{progressionTotale}}</ion-card-title>
                     </ion-card-header>
                     <ion-item color="dark">
                         <ion-button color="light" fill="outline" slot="end">View</ion-button>
@@ -23,11 +23,10 @@
             <ion-col>
                 <ion-card>
                     <ion-card-header>
-                        <ion-card-subtitle>Progression</ion-card-subtitle>
-                        <ion-card-title>67</ion-card-title>
+                        <ion-card-subtitle>Répartition</ion-card-subtitle>
                     </ion-card-header>
                     <ion-card-content>
-                        <canvas #barChart></canvas>
+                        <canvas #pieChart></canvas>
                     </ion-card-content>
                 </ion-card>
             </ion-col>
@@ -37,7 +36,7 @@
                 <ion-card>
                     <ion-card-header color="success">
                         <ion-card-subtitle>Nombre de réussite</ion-card-subtitle>
-                        <ion-card-title>54</ion-card-title>
+                        <ion-card-title>?</ion-card-title>
                     </ion-card-header>
                 </ion-card>
             </ion-col>
@@ -45,7 +44,7 @@
                 <ion-card>
                     <ion-card-header color="danger">
                         <ion-card-subtitle>Nombre d'échecs</ion-card-subtitle>
-                        <ion-card-title>13</ion-card-title>
+                        <ion-card-title>?</ion-card-title>
                     </ion-card-header>
                 </ion-card>
             </ion-col>
@@ -55,7 +54,7 @@
                 <ion-card>
                     <ion-card-header color="danger">
                         <ion-card-subtitle>Dominance</ion-card-subtitle>
-                        <ion-card-title>30</ion-card-title>
+                        <ion-card-title>{{numberDominanceQuiz}}</ion-card-title>
                     </ion-card-header>
                 </ion-card>
             </ion-col>
@@ -63,7 +62,7 @@
                 <ion-card>
                     <ion-card-header color="warning">
                         <ion-card-subtitle>Influence</ion-card-subtitle>
-                        <ion-card-title>14</ion-card-title>
+                        <ion-card-title>{{numberInfluenceQuiz}}</ion-card-title>
                     </ion-card-header>
                 </ion-card>
             </ion-col>
@@ -73,7 +72,7 @@
                 <ion-card>
                     <ion-card-header color="success">
                         <ion-card-subtitle>Stabilité</ion-card-subtitle>
-                        <ion-card-title>17</ion-card-title>
+                        <ion-card-title>{{numberStabiliteQuiz}}</ion-card-title>
                     </ion-card-header>
                 </ion-card>
             </ion-col>
@@ -81,8 +80,52 @@
                 <ion-card>
                     <ion-card-header color="primary">
                         <ion-card-subtitle>Conformité</ion-card-subtitle>
-                        <ion-card-title>6</ion-card-title>
+                        <ion-card-title>{{numberConformiteQuiz}}</ion-card-title>
                     </ion-card-header>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-card>
+                    <ion-card-header>
+                        <ion-card-subtitle>Progression Dominance</ion-card-subtitle>
+                    </ion-card-header>
+                    <ion-card-content>
+                        <canvas #barChartDominance></canvas>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+            <ion-col>
+                <ion-card>
+                    <ion-card-header>
+                        <ion-card-subtitle>Progression Influence</ion-card-subtitle>
+                    </ion-card-header>
+                    <ion-card-content>
+                        <canvas #barChartInfluence></canvas>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-card>
+                    <ion-card-header>
+                        <ion-card-subtitle>Progression Stabilité</ion-card-subtitle>
+                    </ion-card-header>
+                    <ion-card-content>
+                        <canvas #barChartStabilite></canvas>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+            <ion-col>
+                <ion-card>
+                    <ion-card-header>
+                        <ion-card-subtitle>Progression Conformité</ion-card-subtitle>
+                    </ion-card-header>
+                    <ion-card-content>
+                        <canvas #barChartConformite></canvas>
+                    </ion-card-content>
                 </ion-card>
             </ion-col>
         </ion-row>
