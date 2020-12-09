@@ -11,15 +11,42 @@
             <ion-col>
                 <ion-card>
                     <ion-card-header color="dark">
-                        <ion-card-subtitle>Progression</ion-card-subtitle>
-                        <ion-card-title>{{progressionTotale}}</ion-card-title>
+                        <ion-card-title>Progression Totale</ion-card-title>
                     </ion-card-header>
+                    <ion-card-content style="background-color: #222428;color: white;">
+                        Tu as fait un total de {{progressionTotale}} quiz.
+                        <br/> {{remarqueNombreVictoireDefaite}}
+                        <br/> {{remarqueRepartition}}
+                        <br/> {{remarqueDominance}}
+                        <br/> {{remarqueInfluence}}
+                        <br/> {{remarqueStabilite}}
+                        <br/> {{remarqueConformite}}
+                    </ion-card-content>
                     <ion-item color="dark">
                         <ion-button color="light" fill="outline" slot="end">View</ion-button>
                     </ion-item>
-
                 </ion-card>
             </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-card>
+                    <ion-card-header color="darkgreen">
+                        <ion-card-subtitle>Nombre de réussite</ion-card-subtitle>
+                        <ion-card-title>{{quizReussite}}</ion-card-title>
+                    </ion-card-header>
+                </ion-card>
+            </ion-col>
+            <ion-col>
+                <ion-card>
+                    <ion-card-header color="darkred">
+                        <ion-card-subtitle>Nombre d'échecs</ion-card-subtitle>
+                        <ion-card-title>{{quizEchec}}</ion-card-title>
+                    </ion-card-header>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+        <ion-row>
             <ion-col>
                 <ion-card>
                     <ion-card-header>
@@ -31,28 +58,11 @@
                 </ion-card>
             </ion-col>
         </ion-row>
+
         <ion-row>
             <ion-col>
                 <ion-card>
-                    <ion-card-header color="success">
-                        <ion-card-subtitle>Nombre de réussite</ion-card-subtitle>
-                        <ion-card-title>?</ion-card-title>
-                    </ion-card-header>
-                </ion-card>
-            </ion-col>
-            <ion-col>
-                <ion-card>
-                    <ion-card-header color="danger">
-                        <ion-card-subtitle>Nombre d'échecs</ion-card-subtitle>
-                        <ion-card-title>?</ion-card-title>
-                    </ion-card-header>
-                </ion-card>
-            </ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col>
-                <ion-card>
-                    <ion-card-header color="danger">
+                    <ion-card-header color="rouge">
                         <ion-card-subtitle>Dominance</ion-card-subtitle>
                         <ion-card-title>{{numberDominanceQuiz}}</ion-card-title>
                     </ion-card-header>
@@ -60,7 +70,7 @@
             </ion-col>
             <ion-col>
                 <ion-card>
-                    <ion-card-header color="warning">
+                    <ion-card-header color="jaune">
                         <ion-card-subtitle>Influence</ion-card-subtitle>
                         <ion-card-title>{{numberInfluenceQuiz}}</ion-card-title>
                     </ion-card-header>
@@ -70,7 +80,7 @@
         <ion-row>
             <ion-col>
                 <ion-card>
-                    <ion-card-header color="success">
+                    <ion-card-header color="vert">
                         <ion-card-subtitle>Stabilité</ion-card-subtitle>
                         <ion-card-title>{{numberStabiliteQuiz}}</ion-card-title>
                     </ion-card-header>
@@ -78,7 +88,7 @@
             </ion-col>
             <ion-col>
                 <ion-card>
-                    <ion-card-header color="primary">
+                    <ion-card-header color="bleu">
                         <ion-card-subtitle>Conformité</ion-card-subtitle>
                         <ion-card-title>{{numberConformiteQuiz}}</ion-card-title>
                     </ion-card-header>

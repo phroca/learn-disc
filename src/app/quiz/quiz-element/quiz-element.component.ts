@@ -36,6 +36,12 @@ export class QuizElementComponent implements OnInit {
   // Structure d'information pour les infos utilisateurs
   infosQuestionnaire: InfosQuestionnaire;
 
+  discProgression = {
+    progression : 0,
+    quizReussite: 0,
+    quizEchec: 0
+  };
+
   constructor(private route: ActivatedRoute, private router: Router) {
     this.disc = [];
     this.discTemporaire = new Disc();
@@ -69,6 +75,11 @@ export class QuizElementComponent implements OnInit {
     this.discTemporaire = this.disc.find(discElement => discElement.titre === this.discChoisi);
     this.initialiserQuiz();
     this.initialiserInfosUtilisateurQuiz();
+    get('discProgression').then(value => {
+      if (value) {
+        this.discProgression = value;
+      }
+    });
   }
 
 
@@ -405,6 +416,12 @@ export class QuizElementComponent implements OnInit {
       this.infosQuestionnaire.reponseSousStress.bonne++;
       this.scoreTotal++;
     }
+    if (this.scoreTotal === 7 ) {
+      this.discProgression.quizReussite++;
+    } else {
+      this.discProgression.quizEchec++;
+    }
+    set('discProgression', this.discProgression);
     this.slides.slideNext();
     set('infos-' + this.discChoisi, this.infosQuestionnaire);
   }

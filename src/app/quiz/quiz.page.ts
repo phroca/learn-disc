@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras } from '@angular/router';
 import { NavController } from '@ionic/angular';
-import { timeStamp } from 'console';
 import { get, set } from '../services/storage.service';
 
 @Component({
@@ -9,6 +8,7 @@ import { get, set } from '../services/storage.service';
   templateUrl: 'quiz.page.html',
   styleUrls: ['quiz.page.scss']
 })
+
 export class QuizPage implements OnInit{
   quizList = [
     {
@@ -36,17 +36,43 @@ export class QuizPage implements OnInit{
       color: '#FFD439'
     }
   ];
-  nombreQuizzText: number;
-  TotalQuiz: number;
-  constructor(private navCtrl: NavController) {
-    this.nombreQuizzText = 0;
-    this.TotalQuiz = 0;
-   }
+
+  discTitleDone = [
+    {
+      title: 'Dominance',
+      numberQuizzDone: 0
+    },
+    {
+      title: 'Influence',
+      numberQuizzDone: 0
+    },
+    {
+      title: 'Stabilité',
+      numberQuizzDone: 0
+    },
+    {
+      title: 'Conformité',
+      numberQuizzDone: 0
+    }
+  ];
+
+  discProgression = {
+    progression : 0,
+    quizReussite: 0,
+    quizEchec: 0
+  };
+
+  constructor(private navCtrl: NavController) {}
 
   ngOnInit() {
-    get('Progression').then(value => {
+    get('discProgression').then(value => {
       if (value) {
-        this.TotalQuiz = value;
+        this.discProgression = value;
+      }
+    });
+    get('DiscTitleDone').then(value => {
+      if (value) {
+        this.discTitleDone = value;
       }
     });
   }
@@ -63,16 +89,16 @@ export class QuizPage implements OnInit{
   }
 
   enregistrerQuizzBdd(titre: string){
-    get(titre).then(value => {
-      if (value) {
-        this.nombreQuizzText = value + 1;
-      } else {
-        this.nombreQuizzText++;
-      }
-      set(titre, this.nombreQuizzText);
-    });
-    this.TotalQuiz++;
-    set('Progression', this.TotalQuiz);
+    const discElement = this.discTitleDone.find(element => element.title === titre);
+    let titlenumber: number = discElement.numberQuizzDone;
+    if (!titlenumber) {
+      titlenumber = 0;
+    }
+    titlenumber++;
+    discElement.numberQuizzDone = titlenumber;
+    this.discProgression.progression++;
+    set('DiscTitleDone', this.discTitleDone);
+    set('discProgression', this.discProgression);
   }
 
 }

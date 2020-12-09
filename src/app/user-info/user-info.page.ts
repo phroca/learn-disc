@@ -29,7 +29,37 @@ export class UserInfoPage implements OnInit{
   infosStabiliteQuiz: InfosQuestionnaire;
   infosConformiteQuiz: InfosQuestionnaire;
   progressionTotale: number;
-
+  quizReussite: number;
+  quizEchec: number;
+  discProgression = {
+    progression : 0,
+    quizReussite: 0,
+    quizEchec: 0
+  };
+  discTitleDone = [
+    {
+      title: 'Dominance',
+      numberQuizzDone: 0
+    },
+    {
+      title: 'Influence',
+      numberQuizzDone: 0
+    },
+    {
+      title: 'Stabilité',
+      numberQuizzDone: 0
+    },
+    {
+      title: 'Conformité',
+      numberQuizzDone: 0
+    }
+  ];
+  remarqueNombreVictoireDefaite: string;
+  remarqueRepartition: string;
+  remarqueDominance: string;
+  remarqueInfluence: string;
+  remarqueStabilite: string;
+  remarqueConformite: string;
   constructor() {
     this.numberDominanceQuiz = 0;
     this.numberInfluenceQuiz = 0;
@@ -40,22 +70,44 @@ export class UserInfoPage implements OnInit{
     this.infosStabiliteQuiz = new InfosQuestionnaire();
     this.infosConformiteQuiz = new InfosQuestionnaire();
     this.progressionTotale = 0;
+    this.quizReussite = 0;
+    this.quizEchec = 0;
+    this.remarqueNombreVictoireDefaite = '';
+    this.remarqueRepartition = '';
+    this.remarqueDominance = '';
+    this.remarqueInfluence = '';
+    this.remarqueStabilite = '';
+    this.remarqueConformite = '';
   }
 
   ngOnInit(): void {
   }
 
   ionViewDidEnter() {
-    get('Dominance').then(value => this.numberDominanceQuiz = value === null ? 0 : value);
-    get('Influence').then(value => this.numberInfluenceQuiz = value === null ? 0 : value);
-    get('Stabilité').then(value => this.numberStabiliteQuiz = value === null ? 0 : value);
-    get('Conformité').then(value => this.numberConformiteQuiz = value === null ? 0 : value);
-    get('Progression').then(value => this.progressionTotale = value === null ? 0 : value);
+    get('DiscTitleDone').then ( value => {
+      if (value) {
+        this.discTitleDone = value;
+        this.numberDominanceQuiz = this.discTitleDone.find( element => element.title === 'Dominance').numberQuizzDone;
+        this.numberInfluenceQuiz = this.discTitleDone.find( element => element.title === 'Influence').numberQuizzDone;
+        this.numberStabiliteQuiz = this.discTitleDone.find( element => element.title === 'Stabilité').numberQuizzDone;
+        this.numberConformiteQuiz = this.discTitleDone.find( element => element.title === 'Conformité').numberQuizzDone;
+      }
+      this.createPieChart();
+      this.genererRemarquesRepartition();
+    });
+    get('discProgression').then(value => {
+      if (value) {
+        this.discProgression = value;
+      }
+      this.progressionTotale = this.discProgression.progression;
+      this.quizReussite = this.discProgression.quizReussite;
+      this.quizEchec = this.discProgression.quizEchec;
+      this.genererRemarquesProgression();
+    });
     get('infos-Dominance').then(value => { if (value){ this.infosDominanceQuiz = value; } this.createBarChartDominance(); });
     get('infos-Influence').then(value => { if (value){ this.infosInfluenceQuiz = value;  } this.createBarChartInfluence(); });
-    get('infos-Stabilite').then(value => { if (value){ this.infosStabiliteQuiz = value;  } this.createBarChartStabilite(); });
-    get('infos-Conformite').then(value => { if (value){ this.infosConformiteQuiz = value;  } this.createBarChartConformite(); });
-    this.createPieChart();
+    get('infos-Stabilité').then(value => { if (value){ this.infosStabiliteQuiz = value;  } this.createBarChartStabilite(); });
+    get('infos-Conformité').then(value => { if (value){ this.infosConformiteQuiz = value;  } this.createBarChartConformite(); });
   }
 
   createBarChartDominance() {
@@ -74,8 +126,8 @@ export class UserInfoPage implements OnInit{
             this.infosDominanceQuiz.reponseIrritePar.bonne,
             this.infosDominanceQuiz.reponseSousStress.bonne
           ],
-          backgroundColor: '#ddee44',
-          borderColor: '#ddee44',
+          backgroundColor: 'darkgreen',
+          borderColor: 'darkgreen',
           borderWidth: 1,
           minBarLength: 2
         },
@@ -89,8 +141,8 @@ export class UserInfoPage implements OnInit{
             this.infosDominanceQuiz.reponseIrritePar.mauvaise,
             this.infosDominanceQuiz.reponseSousStress.mauvaise
           ],
-          backgroundColor: '#dd1144',
-          borderColor: '#dd1144',
+          backgroundColor: 'darkred',
+          borderColor: 'darkred',
           borderWidth: 1
         }]
       },
@@ -121,8 +173,8 @@ export class UserInfoPage implements OnInit{
             this.infosInfluenceQuiz.reponseIrritePar.bonne,
             this.infosInfluenceQuiz.reponseSousStress.bonne
           ],
-          backgroundColor: '#ddee44',
-          borderColor: '#ddee44',
+          backgroundColor: 'darkgreen',
+          borderColor: 'darkgreen',
           borderWidth: 1
         },
         {
@@ -135,8 +187,8 @@ export class UserInfoPage implements OnInit{
             this.infosInfluenceQuiz.reponseIrritePar.mauvaise,
             this.infosInfluenceQuiz.reponseSousStress.mauvaise
           ],
-          backgroundColor: '#dd1144',
-          borderColor: '#dd1144',
+          backgroundColor: 'darkred',
+          borderColor: 'darkred',
           borderWidth: 1
         }]
       },
@@ -158,8 +210,8 @@ export class UserInfoPage implements OnInit{
             this.infosStabiliteQuiz.reponseIrritePar.bonne,
             this.infosStabiliteQuiz.reponseSousStress.bonne
           ],
-          backgroundColor: '#ddee44',
-          borderColor: '#ddee44',
+          backgroundColor: 'darkgreen',
+          borderColor: 'darkgreen',
           borderWidth: 1
         },
         {
@@ -172,8 +224,8 @@ export class UserInfoPage implements OnInit{
             this.infosStabiliteQuiz.reponseIrritePar.mauvaise,
             this.infosStabiliteQuiz.reponseSousStress.mauvaise
           ],
-          backgroundColor: '#dd1144',
-          borderColor: '#dd1144',
+          backgroundColor: 'darkred',
+          borderColor: 'darkred',
           borderWidth: 1
         }]
       },
@@ -195,8 +247,8 @@ export class UserInfoPage implements OnInit{
             this.infosConformiteQuiz.reponseIrritePar.bonne,
             this.infosConformiteQuiz.reponseSousStress.bonne
           ],
-          backgroundColor: '#ddee44',
-          borderColor: '#ddee44',
+          backgroundColor: 'darkgreen',
+          borderColor: 'darkgreen',
           borderWidth: 1
         },
         {
@@ -209,8 +261,8 @@ export class UserInfoPage implements OnInit{
             this.infosConformiteQuiz.reponseIrritePar.mauvaise,
             this.infosConformiteQuiz.reponseSousStress.mauvaise
           ],
-          backgroundColor: '#dd1144',
-          borderColor: '#dd1144',
+          backgroundColor: 'darkred',
+          borderColor: 'darkred',
           borderWidth: 1
         }]
       },
@@ -218,6 +270,7 @@ export class UserInfoPage implements OnInit{
   }
 
   createPieChart() {
+
     // Repartition des disc choisis
     this.pie = new Chart(this.pieChart.nativeElement, {
       type: 'pie',
@@ -226,7 +279,7 @@ export class UserInfoPage implements OnInit{
         datasets: [{
           label: 'Répartition des DISC',
           data: [this.numberDominanceQuiz,
-           this.numberInfluenceQuiz,
+            this.numberInfluenceQuiz,
             this.numberStabiliteQuiz,
             this.numberConformiteQuiz
           ],
@@ -237,4 +290,25 @@ export class UserInfoPage implements OnInit{
       }
     });
   }
+
+  genererRemarquesProgression() {
+    const ratioProgression =  this.quizReussite / this.progressionTotale;
+    if (ratioProgression < 0.45) {
+      this.remarqueNombreVictoireDefaite = 'Tu connais beaucoup plus  d\'échecs que de réussite. Révises correctement les différents DISC.';
+    } else if (ratioProgression >= 0.45 && ratioProgression <= 0.6) {
+      this.remarqueNombreVictoireDefaite = 'Ton taux de réussite est dans la moyenne. Continues, tu es sur la bonne voie.';
+    } else if (ratioProgression > 0.6) {
+      this.remarqueNombreVictoireDefaite = 'Ton taux de réussite est tres bien voire excellent. Tu maîtrises les disc que tu as testés.';
+    }
+  }
+
+  genererRemarquesRepartition() {
+  }
+
+    /*this.remarqueRepartition = '';
+    this.remarqueDominance = '';
+    this.remarqueInfluence = '';
+    this.remarqueStabilite = '';
+    this.remarqueConformite = '';
+  }*/
 }
