@@ -1,20 +1,19 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { DiscRaw } from 'src/app/model/disc-raw';
-import {IonSlides} from '@ionic/angular';
+import { ActivatedRoute, Router } from '@angular/router';
+import { IonSlides } from '@ionic/angular';
 import * as disc from '../../data/disc.json';
 import * as discRawJson from '../../data/disc-raw.json';
-import { Disc } from '../../model/disc';
-import { ActivatedRoute, Router } from '@angular/router';
-import { get, set } from '../../services/storage.service';
-import { VirtualTimeScheduler } from 'rxjs';
+import { Disc } from 'src/app/model/disc';
+import { DiscRaw } from 'src/app/model/disc-raw';
 import { InfosQuestionnaire } from 'src/app/model/infos-questionnaire';
+import { get, set } from 'src/app/services/storage.service';
 
 @Component({
-  selector: 'app-quiz-element',
-  templateUrl: './quiz-element.component.html',
-  styleUrls: ['./quiz-element.component.scss'],
+  selector: 'app-quiz-content',
+  templateUrl: './quiz-content.page.html',
+  styleUrls: ['./quiz-content.page.scss'],
 })
-export class QuizElementComponent implements OnInit {
+export class QuizContentPage implements OnInit {
 
   @ViewChild(IonSlides) slides: IonSlides;
 
@@ -448,4 +447,5 @@ export class QuizElementComponent implements OnInit {
     }
     return array;
   }
+
 }

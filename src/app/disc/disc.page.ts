@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-disc',
@@ -6,33 +7,25 @@ import { Component } from '@angular/core';
   styleUrls: ['disc.page.scss']
 })
 export class DiscPage {
-  // Paramètres optionnelles pour le composant slider
-  slideOpts = {
-    initialSlide: 0,
-    speed: 400
-  };
-  flipcardD: boolean;
-  flipcardI: boolean;
-  flipcardS: boolean;
-  flipcardC: boolean;
-  constructor() {
-    this.flipcardD = false;
-    this.flipcardI = false;
-    this.flipcardS = false;
-    this.flipcardC = false;
+
+  constructor(private navCtrl: NavController) {}
+
+  gotoDiscSchemaPage() {
+    this.navCtrl.navigateForward('/tabs/disc/schema-disc');
   }
 
-  flipCardDominance(){
-    this.flipcardD = !this.flipcardD;
-  }
-  flipCardInfluence(){
-    this.flipcardI = !this.flipcardI;
-  }
-  flipCardStabilite(){
-    this.flipcardS = !this.flipcardS;
-  }
-  flipCardConformite(){
-    this.flipcardC = !this.flipcardC;
+  gotoDominancePage() {
+    this.navCtrl.navigateForward('/tabs/disc/dominance-page');
   }
 
+  gotoInfluencePage() {
+    this.navCtrl.navigateForward('/tabs/disc/influence-page');
+  }
+
+  gotoStabilitePage() {
+    this.navCtrl.navigateForward('/tabs/disc/stabilite-page');
+  }
+  gotoConformitePage() {
+    this.navCtrl.navigateForward('/tabs/disc/conformite-page');
+  }
 }

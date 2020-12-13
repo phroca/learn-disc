@@ -85,7 +85,7 @@ export class QuizPage implements OnInit{
       }
     };
     this.enregistrerQuizzBdd(quiz.title);
-    this.navCtrl.navigateForward('/tabs/quiz/quiz-element', navigationExtras);
+    this.navCtrl.navigateForward('/tabs/quiz/quiz-content', navigationExtras);
   }
 
   enregistrerQuizzBdd(titre: string){

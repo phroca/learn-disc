@@ -28,6 +28,13 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+@font-face {
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: normal;
+    src: url('./assets/font/Quicksand.ttf');
+}
+
 :root {
     --ion-color-rouge: #FF0000;
     --ion-color-rouge-rgb: 255, 0, 0;
@@ -65,6 +72,7 @@
     --ion-color-darkred-contrast-rgb: 255, 255, 255;
     --ion-color-darkred-shade: #7a0000;
     --ion-color-darkred-tint: #971a1a;
+    --ion-font-family: 'Quicksand';
 }
 
 .ion-color-rouge {
@@ -119,4 +127,14 @@
     --ion-color-contrast-rgb: var(--ion-color-darkred-contrast-rgb);
     --ion-color-shade: var(--ion-color-darkred-shade);
     --ion-color-tint: var(--ion-color-darkred-tint);
+}
+
+.small-margin {
+    margin-top: 5px !important;
+    margin-bottom: 5px!important;
+}
+
+.small-padding {
+    padding-top: 5px !important;
+    padding-bottom: 5px!important;
 }

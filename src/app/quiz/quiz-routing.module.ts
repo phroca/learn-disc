@@ -8,8 +8,8 @@ const routes: Routes = [
     component: QuizPage,
   },
   {
-    path: 'quiz-element',
-    loadChildren: () => import('../quiz/quiz-element/quiz-element.module').then(m => m.QuizElementModule)
+    path: 'quiz-content',
+    loadChildren: () => import('./quiz-content/quiz-content.module').then( m => m.QuizContentPageModule)
   }
 ];
 
