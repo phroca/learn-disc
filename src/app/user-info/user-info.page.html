@@ -2,11 +2,11 @@
     <ion-grid>
         <ion-row>
             <ion-col>
-                <ion-card class="small-margin">
-                    <ion-card-header color="dark">
-                        <ion-card-title>Progression Totale</ion-card-title>
+                <ion-card class="small-margin progression-totale-bg">
+                    <ion-card-header>
+                        <ion-card-title class="font-white">Progression Totale</ion-card-title>
                     </ion-card-header>
-                    <ion-card-content style="background-color: #222428;color: white;">
+                    <ion-card-content class="font-white">
                         Tu as fait un total de {{progressionTotale}} quiz.
                         <br/> {{remarqueNombreVictoireDefaite}}
                         <br/> {{remarqueRepartition}}
@@ -15,26 +15,23 @@
                         <br/> {{remarqueStabilite}}
                         <br/> {{remarqueConformite}}
                     </ion-card-content>
-                    <ion-item color="dark">
-                        <ion-button color="light" fill="outline" slot="end">View</ion-button>
-                    </ion-item>
                 </ion-card>
             </ion-col>
         </ion-row>
         <ion-row>
             <ion-col>
-                <ion-card class="small-margin">
-                    <ion-card-header color="darkgreen">
-                        <ion-card-subtitle>Quiz réussis</ion-card-subtitle>
-                        <ion-card-title>{{quizReussite}}</ion-card-title>
+                <ion-card class="small-margin quiz-reussi-bg">
+                    <ion-card-header>
+                        <ion-card-subtitle class="font-white">Quiz réussis</ion-card-subtitle>
+                        <ion-card-title class="font-white">{{quizReussite}}</ion-card-title>
                     </ion-card-header>
                 </ion-card>
             </ion-col>
             <ion-col>
-                <ion-card class="small-margin">
-                    <ion-card-header color="darkred">
-                        <ion-card-subtitle>Quiz échoués</ion-card-subtitle>
-                        <ion-card-title>{{quizEchec}}</ion-card-title>
+                <ion-card class="small-margin quiz-echoue-bg">
+                    <ion-card-header>
+                        <ion-card-subtitle class="font-white">Quiz échoués</ion-card-subtitle>
+                        <ion-card-title class="font-white">{{quizEchec}}</ion-card-title>
                     </ion-card-header>
                 </ion-card>
             </ion-col>
@@ -46,7 +43,7 @@
                         <ion-card-subtitle>Répartition</ion-card-subtitle>
                     </ion-card-header>
                     <ion-card-content>
-                        <canvas #pieChart></canvas>
+                        <canvas height="516" #pieChart></canvas>
                     </ion-card-content>
                 </ion-card>
             </ion-col>
@@ -95,7 +92,7 @@
                         <ion-card-subtitle>Progression Dominance</ion-card-subtitle>
                     </ion-card-header>
                     <ion-card-content>
-                        <canvas #barChartDominance></canvas>
+                        <canvas height="516" #barChartDominance></canvas>
                     </ion-card-content>
                 </ion-card>
             </ion-col>
@@ -105,7 +102,7 @@
                         <ion-card-subtitle>Progression Influence</ion-card-subtitle>
                     </ion-card-header>
                     <ion-card-content>
-                        <canvas #barChartInfluence></canvas>
+                        <canvas height="516" #barChartInfluence></canvas>
                     </ion-card-content>
                 </ion-card>
             </ion-col>
@@ -117,7 +114,7 @@
                         <ion-card-subtitle>Progression Stabilité</ion-card-subtitle>
                     </ion-card-header>
                     <ion-card-content>
-                        <canvas #barChartStabilite></canvas>
+                        <canvas height="516" #barChartStabilite></canvas>
                     </ion-card-content>
                 </ion-card>
             </ion-col>
@@ -127,7 +124,7 @@
                         <ion-card-subtitle>Progression Conformité</ion-card-subtitle>
                     </ion-card-header>
                     <ion-card-content>
-                        <canvas #barChartConformite></canvas>
+                        <canvas height="516" #barChartConformite></canvas>
                     </ion-card-content>
                 </ion-card>
             </ion-col>

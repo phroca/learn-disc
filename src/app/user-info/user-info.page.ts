@@ -128,8 +128,7 @@ export class UserInfoPage implements OnInit{
           ],
           backgroundColor: 'darkgreen',
           borderColor: 'darkgreen',
-          borderWidth: 1,
-          minBarLength: 2
+          borderWidth: 1
         },
         {
           label: 'nombre de mauvaises réponses',

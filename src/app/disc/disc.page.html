@@ -1,14 +1,20 @@
 <ion-content [fullscreen]="true">
-
     <ion-grid>
-        <ion-row>
+        <ion-row style="padding-bottom: 1em;">
             <ion-col>
-                <img src="../../assets/img/welcome-learn-disc.png" alt="disc">
+                <img src="../../assets/img/welcome-learn-disc-pic.png" alt="disc" style="padding: 0px 90px;">
             </ion-col>
         </ion-row>
         <ion-row>
+            <ion-col style="margin-inline: 16px; padding-bottom: 2em;text-align: center">
+                <span style="font-size: 35px;"><strong>LEARN DISC</strong></span>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-grid>
+        <ion-row>
             <ion-col>
-                <ion-card class="small-margin" (click)="gotoDiscSchemaPage()">
+                <ion-card class="small-margin no-box-shadow disc-bg" (click)="gotoDiscSchemaPage()">
                     <div>
                         <ion-row>
                             <ion-col size="9">
@@ -20,7 +26,7 @@
                                 </ion-card-content>
                             </ion-col>
                             <ion-col size="3">
-                                <img src="../../assets/img/disc-icon-square.png" alt="disc-icon" height="50px" width="50px" class="disc-square">
+                                <!-- <img src="../../assets/img/disc-icon-square.png" alt="disc-icon" height="50px" width="50px" class="disc-square"> -->
                             </ion-col>
                         </ion-row>
                     </div>
@@ -29,19 +35,19 @@
         </ion-row>
         <ion-row>
             <ion-col>
-                <ion-card class="small-margin" (click)="gotoDominancePage()">
+                <ion-card class="small-margin no-box-shadow dominance-bg" (click)="gotoDominancePage()">
                     <div>
                         <ion-row>
                             <ion-col size="9">
-                                <ion-card-header class="small-padding">
-                                    <ion-card-subtitle>Dominance</ion-card-subtitle>
+                                <ion-card-header class="small-padding font-white">
+                                    <ion-card-subtitle class="font-white">Dominance</ion-card-subtitle>
                                 </ion-card-header>
-                                <ion-card-content class="small-padding font-content">
+                                <ion-card-content class="small-padding font-content font-white">
                                     Comprendre la dominance.
                                 </ion-card-content>
                             </ion-col>
                             <ion-col size="3">
-                                <div class="dominance-gradient"></div>
+                                <!-- <div class="dominance-gradient"></div> -->
                             </ion-col>
                         </ion-row>
                     </div>
@@ -50,20 +56,20 @@
         </ion-row>
         <ion-row>
             <ion-col>
-                <ion-card class="small-margin" (click)="gotoInfluencePage()">
+                <ion-card class="small-margin no-box-shadow influence-bg" (click)="gotoInfluencePage()">
                     <div>
                         <ion-row>
                             <ion-col size="9">
                                 <ion-card-header class="small-padding">
-                                    <ion-card-subtitle>Influence</ion-card-subtitle>
+                                    <ion-card-subtitle class="font-white">Influence</ion-card-subtitle>
                                 </ion-card-header>
-                                <ion-card-content class="small-padding font-content">
+                                <ion-card-content class="small-padding font-content font-white">
                                     Comprendre l'influence.
                                 </ion-card-content>
                             </ion-col>
 
                             <ion-col size="3">
-                                <div class="influence-gradient"></div>
+                                <!-- <div class="influence-gradient"></div> -->
                             </ion-col>
                         </ion-row>
                     </div>
@@ -72,19 +78,19 @@
         </ion-row>
         <ion-row>
             <ion-col>
-                <ion-card class="small-margin" (click)="gotoStabilitePage()">
+                <ion-card class="small-margin no-box-shadow stabilite-bg" (click)="gotoStabilitePage()">
                     <div>
                         <ion-row>
                             <ion-col size="9">
                                 <ion-card-header class="small-padding">
-                                    <ion-card-subtitle>Stabilité</ion-card-subtitle>
+                                    <ion-card-subtitle class="font-white">Stabilité</ion-card-subtitle>
                                 </ion-card-header>
-                                <ion-card-content class="small-padding font-content">
+                                <ion-card-content class="small-padding font-content font-white">
                                     Comprendre la stabilité.
                                 </ion-card-content>
                             </ion-col>
                             <ion-col size="3">
-                                <div class="stabilite-gradient"></div>
+                                <!-- <div class="stabilite-gradient"></div> -->
                             </ion-col>
                         </ion-row>
                     </div>
@@ -93,19 +99,19 @@
         </ion-row>
         <ion-row>
             <ion-col>
-                <ion-card class="small-margin" (click)="gotoConformitePage()">
+                <ion-card class="small-margin no-box-shadow conformite-bg" (click)="gotoConformitePage()">
                     <div>
                         <ion-row>
                             <ion-col size="9">
-                                <ion-card-header class="small-padding">
-                                    <ion-card-subtitle>Conformité</ion-card-subtitle>
+                                <ion-card-header class="small-padding font-white">
+                                    <ion-card-subtitle class="font-white">Conformité</ion-card-subtitle>
                                 </ion-card-header>
-                                <ion-card-content class="small-padding font-content">
+                                <ion-card-content class="small-padding font-content font-white">
                                     Comprendre la conformité.
                                 </ion-card-content>
                             </ion-col>
                             <ion-col size="3">
-                                <div class="conformite-gradient"></div>
+                                <!-- <div class="conformite-gradient"></div> -->
                             </ion-col>
                         </ion-row>
                     </div>

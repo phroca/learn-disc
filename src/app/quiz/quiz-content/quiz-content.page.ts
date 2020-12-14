@@ -16,7 +16,7 @@ import { get, set } from 'src/app/services/storage.service';
 export class QuizContentPage implements OnInit {
 
   @ViewChild(IonSlides) slides: IonSlides;
-
+  retourText = 'Retour';
   listDisc: any = (disc as any).default;
   discRawJson: any = (discRawJson as any).default;
   discChoisi: string;

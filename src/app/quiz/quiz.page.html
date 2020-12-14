@@ -1,26 +1,33 @@
 <ion-content [fullscreen]="true">
     <ion-grid>
-        <ion-row>
+        <ion-row style="padding-bottom: 1em;">
             <ion-col>
-                <img src="../../assets/img/disc-quiz.png" alt="disc">
+                <img src="../../assets/img/disc-quiz-pic.png" alt="disc" style="padding: 0px 70px;">
             </ion-col>
         </ion-row>
+        <ion-row>
+            <ion-col style="margin-inline: 16px; padding-bottom: 2em;text-align: center">
+                <span style="font-size: 35px;"><strong>QUIZ</strong></span>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-grid>
         <ion-row *ngFor="let quiz of quizList" button (click)="gotoquiz(quiz.title)">
             <ion-col>
-                <ion-card class="small-margin">
+                <ion-card class="small-margin {{quiz.cssbg}}">
                     <div>
                         <ion-row>
-                            <ion-col size="9">
+                            <ion-col size="10">
                                 <ion-card-header class="small-padding">
-                                    <ion-card-subtitle>{{quiz.title}}</ion-card-subtitle>
+                                    <ion-card-subtitle class="font-white">{{quiz.title}}</ion-card-subtitle>
                                 </ion-card-header>
-                                <ion-card-content class="small-padding font-content">
+                                <ion-card-content class="small-padding font-content font-white">
                                     Quiz : {{quiz.title}}
                                 </ion-card-content>
                             </ion-col>
-                            <ion-col size="3">
-                                <div>
-                                    <ion-icon name="{{quiz.icon}}" slot="end" style="font-size: 50px;padding-left: 15px;padding-top: 5px;"></ion-icon>
+                            <ion-col size="2">
+                                <div style="text-align: right;">
+                                    <ion-icon name="{{quiz.icon}}" slot="end" class="font-white" style="font-size: 50px;padding-top: 5px;"></ion-icon>
                                 </div>
                             </ion-col>
                         </ion-row>

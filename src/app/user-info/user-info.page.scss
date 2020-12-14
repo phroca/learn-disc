@@ -1,0 +1,30 @@
+.progression-totale-bg {
+    background: #222428;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(90deg, #3d4046, #222428);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(90deg, #3d4046, #222428);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.quiz-reussi-bg {
+    background: darkgreen;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(90deg, #005a00, darkgreen);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(90deg, #005a00, darkgreen);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.quiz-echoue-bg {
+    background: darkred;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(90deg, #e20000, darkred);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(90deg, #e20000, darkred);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.font-white {
+    color: #FFF;
+}

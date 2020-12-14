@@ -1,10 +1,9 @@
-<ion-header>
-    <ion-toolbar style="--border-width: 0 !important;">
-        <ion-buttons slot="start">
-            <ion-back-button defaultHref="/tabs/disc" [text]="retourText" color="dark"></ion-back-button>
-        </ion-buttons>
-    </ion-toolbar>
-</ion-header>
+<ion-toolbar style="--border-width: 0 !important;">
+    <ion-buttons slot="start">
+        <ion-back-button defaultHref="/tabs/disc" [text]="retourText" color="dark"></ion-back-button>
+    </ion-buttons>
+</ion-toolbar>
+
 
 <ion-content [fullscreen]="true">
     <ion-grid>
@@ -15,7 +14,7 @@
         </ion-row>
     </ion-grid>
     <img src="../../assets/img/disc-presentation.png" alt="disc-presentation" style="width: 100%;margin-left: auto;margin-right: auto;">
-    <div style="background:#F0F0F0; padding-top: 5px; padding-bottom: 30px;border-radius: 15px 15px 0 0;">
+    <div style="background:#F0F0F0; padding-top: 5px;padding-bottom: 10px;border-radius: 15px 15px 0 0;">
         <ion-card>
             <ion-card-header>
                 <ion-card-subtitle>Présentation du DISC</ion-card-subtitle>
@@ -26,8 +25,13 @@
                         <ion-text color="danger">La Dominance</ion-text>,
                         <ion-text color="warning">l'Influence</ion-text>,
                         <ion-text color="success">la Stabilité</ion-text>,
-                        <ion-text color="primary">la Conformité</ion-text>. C'est outil d'évaluation psychologique déterminant le type psychologique d'une personne.
+                        <ion-text color="primary">la Conformité</ion-text>.
                     </p>
+                    <p>Le modèle DISC permet d'évaluer le profil des personnes selon ces quatre composantes.</p>
+                    <p>Chaque composante possède ses caractéristiques propres et deux quartiers contigus partagent un certain nombre de caractéristiques. Le profil des personnes est toujours distribué selon les quatre composantes. En général, on observe
+                        une ou deux composantes (contiguës) principales. Il est assez rare qu’un profil ne soit distribué que sur une seule composante. Les composantes diamétralement opposées sur le disque étant en opposition, il est assez rare qu’un
+                        profil soit uniformément réparti sur les quatre composantes.</p>
+
                 </ion-text>
             </ion-card-content>
         </ion-card>

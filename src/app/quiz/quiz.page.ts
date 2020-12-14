@@ -13,25 +13,29 @@ export class QuizPage implements OnInit{
   quizList = [
     {
       title: 'Dominance',
-      icon: 'chevron-forward-circle-outline',
+      cssbg: 'dominance-bg',
+      icon: 'chevron-forward-outline',
       description: 'Personnalité sur la dominance',
       color: '#E63135'
     },
     {
       title: 'Influence',
-      icon: 'chevron-forward-circle-outline',
+      cssbg: 'influence-bg',
+      icon: 'chevron-forward-outline',
       description: 'Personnalité sur l\'influence',
       color: '#0CA9EA'
     },
     {
       title: 'Stabilité',
-      icon: 'chevron-forward-circle-outline',
+      cssbg: 'stabilite-bg',
+      icon: 'chevron-forward-outline',
       description: 'Personnalité sur la stabilité',
       color: '#F46529'
     },
     {
       title: 'Conformité',
-      icon: 'chevron-forward-circle-outline',
+      cssbg: 'conformite-bg',
+      icon: 'chevron-forward-outline',
       description: 'Personnalité sur la conformité',
       color: '#FFD439'
     }

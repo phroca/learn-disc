@@ -1,10 +1,8 @@
-<ion-header>
-    <ion-toolbar style="--border-width: 0 !important;">
-        <ion-buttons slot="start">
-            <ion-back-button defaultHref="/tabs/disc" [text]="retourText" color="dark"></ion-back-button>
-        </ion-buttons>
-    </ion-toolbar>
-</ion-header>
+<ion-toolbar style="--border-width: 0 !important;">
+    <ion-buttons slot="start">
+        <ion-back-button defaultHref="/tabs/disc" [text]="retourText" color="dark"></ion-back-button>
+    </ion-buttons>
+</ion-toolbar>
 
 <ion-content [fullscreen]="true">
     <ion-grid>
@@ -14,13 +12,21 @@
             </ion-text>
         </ion-row>
     </ion-grid>
-    <div style="background:#F4FBF4; padding-top: 5px; padding-bottom: 10px;border-radius: 15px 15px 0 0;">
-        <div style="background-color: green; height: 50px; width: 50px; border-radius: 50%;margin-left: auto;margin-right: auto;margin-top: -30px;"></div>
+    <!-- #F4FBF4 -->
+    <div style="background: linear-gradient(180deg, #EAEAEA, green); padding-top: 15px; padding-bottom: 10px;border-radius: 15px 15px 0 0;">
         <ion-card>
             <ion-card-header>
-                <ion-card-subtitle>Point d'appui</ion-card-subtitle>
+                <ion-card-subtitle>
+                    <div class="disposition-header">
+                        <div>Point d'appui</div>
+                        <div style="font-size: 20px" (click)="toggleVisibilityPA()">
+                            <ion-icon *ngIf="visibilityPA === true" name="eye-outline"></ion-icon>
+                            <ion-icon *ngIf="visibilityPA === false" name="eye-off-outline"></ion-icon>
+                        </div>
+                    </div>
+                </ion-card-subtitle>
             </ion-card-header>
-            <ion-card-content>
+            <ion-card-content *ngIf="visibilityPA === true">
                 <ion-chip color="success">
                     <ion-label>Fiable</ion-label>
                 </ion-chip>
@@ -37,9 +43,17 @@
         </ion-card>
         <ion-card>
             <ion-card-header>
-                <ion-card-subtitle>Limites</ion-card-subtitle>
+                <ion-card-subtitle>
+                    <div class="disposition-header">
+                        <div>Limites</div>
+                        <div style="font-size: 20px" (click)="toggleVisibilityL()">
+                            <ion-icon *ngIf="visibilityL === true" name="eye-outline"></ion-icon>
+                            <ion-icon *ngIf="visibilityL === false" name="eye-off-outline"></ion-icon>
+                        </div>
+                    </div>
+                </ion-card-subtitle>
             </ion-card-header>
-            <ion-card-content>
+            <ion-card-content *ngIf="visibilityL === true">
                 <ion-chip color="success">
                     <ion-label>N’aime pas le changement</ion-label>
                 </ion-chip>
@@ -53,9 +67,17 @@
         </ion-card>
         <ion-card>
             <ion-card-header>
-                <ion-card-subtitle>Besoins</ion-card-subtitle>
+                <ion-card-subtitle>
+                    <div class="disposition-header">
+                        <div>Besoins</div>
+                        <div style="font-size: 20px" (click)="toggleVisibilityB()">
+                            <ion-icon *ngIf="visibilityB === true" name="eye-outline"></ion-icon>
+                            <ion-icon *ngIf="visibilityB === false" name="eye-off-outline"></ion-icon>
+                        </div>
+                    </div>
+                </ion-card-subtitle>
             </ion-card-header>
-            <ion-card-content>
+            <ion-card-content *ngIf="visibilityB === true">
                 <ion-chip color="success">
                     <ion-label>Régularité</ion-label>
                 </ion-chip>
@@ -63,9 +85,17 @@
         </ion-card>
         <ion-card>
             <ion-card-header>
-                <ion-card-subtitle>Moteurs</ion-card-subtitle>
+                <ion-card-subtitle>
+                    <div class="disposition-header">
+                        <div>Moteurs</div>
+                        <div style="font-size: 20px" (click)="toggleVisibilityM()">
+                            <ion-icon *ngIf="visibilityM === true" name="eye-outline"></ion-icon>
+                            <ion-icon *ngIf="visibilityM === false" name="eye-off-outline"></ion-icon>
+                        </div>
+                    </div>
+                </ion-card-subtitle>
             </ion-card-header>
-            <ion-card-content>
+            <ion-card-content *ngIf="visibilityM === true">
                 <ion-chip color="success">
                     <ion-label>Servir</ion-label>
                 </ion-chip>
@@ -76,9 +106,17 @@
         </ion-card>
         <ion-card>
             <ion-card-header>
-                <ion-card-subtitle>Peur</ion-card-subtitle>
+                <ion-card-subtitle>
+                    <div class="disposition-header">
+                        <div>Peur</div>
+                        <div style="font-size: 20px" (click)="toggleVisibilityP()">
+                            <ion-icon *ngIf="visibilityP === true" name="eye-outline"></ion-icon>
+                            <ion-icon *ngIf="visibilityP === false" name="eye-off-outline"></ion-icon>
+                        </div>
+                    </div>
+                </ion-card-subtitle>
             </ion-card-header>
-            <ion-card-content>
+            <ion-card-content *ngIf="visibilityP === true">
                 <ion-chip color="success">
                     <ion-label>Le changement</ion-label>
                 </ion-chip>
@@ -86,9 +124,17 @@
         </ion-card>
         <ion-card>
             <ion-card-header>
-                <ion-card-subtitle>Irrité par</ion-card-subtitle>
+                <ion-card-subtitle>
+                    <div class="disposition-header">
+                        <div>Irrité par</div>
+                        <div style="font-size: 20px" (click)="toggleVisibilityIP()">
+                            <ion-icon *ngIf="visibilityIP === true" name="eye-outline"></ion-icon>
+                            <ion-icon *ngIf="visibilityIP === false" name="eye-off-outline"></ion-icon>
+                        </div>
+                    </div>
+                </ion-card-subtitle>
             </ion-card-header>
-            <ion-card-content>
+            <ion-card-content *ngIf="visibilityIP === true">
                 <ion-chip color="success">
                     <ion-label>L’impatience</ion-label>
                 </ion-chip>
@@ -99,9 +145,17 @@
         </ion-card>
         <ion-card>
             <ion-card-header>
-                <ion-card-subtitle>Sous stress</ion-card-subtitle>
+                <ion-card-subtitle>
+                    <div class="disposition-header">
+                        <div>Sous stress</div>
+                        <div style="font-size: 20px" (click)="toggleVisibilitySS()">
+                            <ion-icon *ngIf="visibilitySS === true" name="eye-outline"></ion-icon>
+                            <ion-icon *ngIf="visibilitySS === false" name="eye-off-outline"></ion-icon>
+                        </div>
+                    </div>
+                </ion-card-subtitle>
             </ion-card-header>
-            <ion-card-content>
+            <ion-card-content *ngIf="visibilitySS === true">
                 <ion-chip color="success">
                     <ion-label>Sévère</ion-label>
                 </ion-chip>
