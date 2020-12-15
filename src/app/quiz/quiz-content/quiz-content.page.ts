@@ -7,6 +7,7 @@ import { Disc } from 'src/app/model/disc';
 import { DiscRaw } from 'src/app/model/disc-raw';
 import { InfosQuestionnaire } from 'src/app/model/infos-questionnaire';
 import { get, set } from 'src/app/services/storage.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-quiz-content',
@@ -29,24 +30,33 @@ export class QuizContentPage implements OnInit {
     initialSlide: 0,
     speed: 400,
     autoHeight: true,
-    simulateTouch: false
+    simulateTouch: false,
+    allowTouchMove: false
   };
 
   // Structure d'information pour les infos utilisateurs
   infosQuestionnaire: InfosQuestionnaire;
 
-  discProgression = {
-    progression : 0,
-    quizReussite: 0,
-    quizEchec: 0
+  discProgression: {
+    progression: number,
+    quizReussite: number,
+    quizEchec: number,
+    quizAbandonne: number
   };
 
-  constructor(private route: ActivatedRoute, private router: Router) {
+  flagLastPage: boolean; // flag permettant de détecter si on est sur le dernier slide
+  constructor(private route: ActivatedRoute, private router: Router, public alertController: AlertController) {
     this.disc = [];
     this.discTemporaire = new Disc();
     this.discRaw = new DiscRaw();
     this.scoreTotal = 0;
     this.infosQuestionnaire = new InfosQuestionnaire();
+    this.discProgression = {
+      progression:  0,
+      quizReussite: 0,
+      quizEchec: 0,
+      quizAbandonne: 0
+    };
   }
 
   ngOnInit(): void {
@@ -80,7 +90,6 @@ export class QuizContentPage implements OnInit {
       }
     });
   }
-
 
   initialiserQuiz(){
     // LISTE ALEATOIRE DES ELEMENTS DU DISC
@@ -422,6 +431,7 @@ export class QuizContentPage implements OnInit {
     }
     set('discProgression', this.discProgression);
     this.slides.slideNext();
+
     set('infos-' + this.discChoisi, this.infosQuestionnaire);
   }
 
@@ -448,4 +458,33 @@ export class QuizContentPage implements OnInit {
     return array;
   }
 
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Quitter le quiz',
+      message: 'Le quiz n\'est pas terminé ! Est-tu sûr de vouloir quitter ?',
+      buttons: [
+        {
+          text: 'Annuler',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {}
+        }, {
+          text: 'Continuer',
+          handler: () => {
+            this.discProgression.quizAbandonne++;
+            set('discProgression', this.discProgression);
+            this.router.navigate(['/tabs/quiz']);
+          }
+        }
+      ]
+    });
+    this.slides.isEnd().then(value => {
+      if (value === true) {
+        this.router.navigate(['/tabs/quiz']);
+      } else {
+        alert.present();
+      }
+    });
+  }
 }

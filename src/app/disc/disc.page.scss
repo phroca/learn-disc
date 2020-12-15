@@ -12,63 +12,6 @@
     margin-left: 15px;
 }
 
-.disc-gradient {
-    margin-top: 3px;
-    height: 50px;
-    border-radius: 7px;
-    background: #FF0000;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #FF0000, #FFFF00, #006400, #0000FF);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #FF0000, #FFFF00, #006400, #0000FF);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
-.disc-bg {
-    background: #ADA996;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(90deg, #ffe6e6, #ffffe2, #e9ffe9, #e5eeff);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(90deg, #ffe6e6, #ffffe2, #e9ffe9, #e5eeff);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
-.dominance-bg {
-    background: #FBF5F5;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(90deg, #ffe6e6, red);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(90deg, #5f0000, red);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
-.influence-bg {
-    background: #FCFCF4;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(90deg, #ffffe2, #FFD800);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(90deg, #8a8a03, #FFD800);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
-.stabilite-bg {
-    background: #F4FBF4;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(90deg, #e9ffe9, green);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(90deg, #006300, green);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
-.conformite-bg {
-    background: #F3F6FC;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(90deg, #e5eeff, blue);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(90deg, #001844, blue);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
 .no-box-shadow {
     box-shadow: none !important;
 }

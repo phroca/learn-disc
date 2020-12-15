@@ -41,32 +41,59 @@ export class QuizPage implements OnInit{
     }
   ];
 
-  discTitleDone = [
+  discTitleDone: [
     {
-      title: 'Dominance',
-      numberQuizzDone: 0
+      title: string,
+      numberQuizzDone: number
     },
     {
-      title: 'Influence',
-      numberQuizzDone: 0
+      title: string,
+      numberQuizzDone: number
     },
     {
-      title: 'Stabilité',
-      numberQuizzDone: 0
+      title: string,
+      numberQuizzDone: number
     },
     {
-      title: 'Conformité',
-      numberQuizzDone: 0
+      title: string,
+      numberQuizzDone: number
     }
   ];
 
-  discProgression = {
-    progression : 0,
-    quizReussite: 0,
-    quizEchec: 0
+  discProgression: {
+    progression: number,
+    quizReussite: number,
+    quizEchec: number,
+    quizAbandonne: number
   };
 
-  constructor(private navCtrl: NavController) {}
+  constructor(private navCtrl: NavController) {
+    this.discProgression = {
+      progression:  0,
+      quizReussite: 0,
+      quizEchec: 0,
+      quizAbandonne: 0
+    };
+
+    this.discTitleDone = [
+      {
+        title: 'Dominance',
+        numberQuizzDone: 0
+      },
+      {
+        title: 'Influence',
+        numberQuizzDone: 0
+      },
+      {
+        title: 'Stabilité',
+        numberQuizzDone: 0
+      },
+      {
+        title: 'Conformité',
+        numberQuizzDone: 0
+      }
+    ];
+  }
 
   ngOnInit() {
     get('discProgression').then(value => {

@@ -36,30 +36,30 @@
 }
 
 :root {
-    --ion-color-rouge: #FF0000;
-    --ion-color-rouge-rgb: 255, 0, 0;
+    --ion-color-rouge: #c0392b;
+    --ion-color-rouge-rgb: 192, 57, 43;
     --ion-color-rouge-contrast: #ffffff;
     --ion-color-rouge-contrast-rgb: 255, 255, 255;
-    --ion-color-rouge-shade: #e00000;
-    --ion-color-rouge-tint: #ff1a1a;
-    --ion-color-vert: #008000;
-    --ion-color-vert-rgb: 0, 128, 0;
+    --ion-color-rouge-shade: #a93226;
+    --ion-color-rouge-tint: #c64d40;
+    --ion-color-vert: #27ae60;
+    --ion-color-vert-rgb: 39, 174, 96;
     --ion-color-vert-contrast: #ffffff;
     --ion-color-vert-contrast-rgb: 255, 255, 255;
-    --ion-color-vert-shade: #007100;
-    --ion-color-vert-tint: #1a8d1a;
-    --ion-color-bleu: #0000FF;
-    --ion-color-bleu-rgb: 0, 0, 255;
+    --ion-color-vert-shade: #229954;
+    --ion-color-vert-tint: #3db670;
+    --ion-color-bleu: #2980b9;
+    --ion-color-bleu-rgb: 41, 128, 185;
     --ion-color-bleu-contrast: #ffffff;
     --ion-color-bleu-contrast-rgb: 255, 255, 255;
-    --ion-color-bleu-shade: #0000e0;
-    --ion-color-bleu-tint: #1a1aff;
-    --ion-color-jaune: #FFFF00;
-    --ion-color-jaune-rgb: 255, 255, 0;
-    --ion-color-jaune-contrast: #000000;
+    --ion-color-bleu-shade: #2471a3;
+    --ion-color-bleu-tint: #3e8dc0;
+    --ion-color-jaune: #f1c40f;
+    --ion-color-jaune-rgb: 241, 196, 15;
+    --ion-color-jaune-contrast: #ffffff;
     --ion-color-jaune-contrast-rgb: 0, 0, 0;
-    --ion-color-jaune-shade: #e0e000;
-    --ion-color-jaune-tint: #ffff1a;
+    --ion-color-jaune-shade: #d4ac0d;
+    --ion-color-jaune-tint: #f2ca27;
     --ion-color-darkgreen: #006400;
     --ion-color-darkgreen-rgb: 0, 100, 0;
     --ion-color-darkgreen-contrast: #ffffff;
@@ -127,6 +127,34 @@
     --ion-color-contrast-rgb: var(--ion-color-darkred-contrast-rgb);
     --ion-color-shade: var(--ion-color-darkred-shade);
     --ion-color-tint: var(--ion-color-darkred-tint);
+}
+
+
+/*FLAT DESIGN COLOR UI */
+
+.dominance-bg {
+    background: #c0392b;
+}
+
+.influence-bg {
+    background: #f1c40f;
+}
+
+.stabilite-bg {
+    background: #27ae60;
+}
+
+.conformite-bg {
+    background: #2980b9;
+}
+
+.disc-bg {
+    background: #ADA996;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(90deg, #ffe6e6, #ffffe2, #e9ffe9, #e5eeff);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(90deg, #ffe6e6, #ffffe2, #e9ffe9, #e5eeff);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .small-margin {

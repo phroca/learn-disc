@@ -1,3 +1,10 @@
+<ion-toolbar style="--border-width: 0 !important;">
+    <ion-buttons slot="end">
+        <ion-button (click)="reinitAllContents($event)" color="rouge">
+            <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+</ion-toolbar>
 <ion-content [fullscreen]="true">
     <ion-grid>
         <ion-row>
@@ -36,6 +43,17 @@
                 </ion-card>
             </ion-col>
         </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-card class="small-margin quiz-abandonne-bg">
+                    <ion-card-header>
+                        <ion-card-subtitle class="font-white">Quiz abandonnés</ion-card-subtitle>
+                        <ion-card-title class="font-white">{{quizAbandonne}}</ion-card-title>
+                    </ion-card-header>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+
         <ion-row>
             <ion-col>
                 <ion-card class="small-margin">

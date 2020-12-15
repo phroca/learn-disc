@@ -1,6 +1,7 @@
 <ion-toolbar style="--border-width: 0 !important;">
     <ion-buttons slot="start">
-        <ion-back-button defaultHref="/tabs/quiz" [text]="retourText" color="dark"></ion-back-button>
+        <ion-button (click)="presentAlertConfirm()" color="dark">
+            <ion-icon name="chevron-back-outline"></ion-icon>Retour</ion-button>
     </ion-buttons>
 </ion-toolbar>
 

@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { Chart } from 'chart.js';
 import { InfosQuestionnaire } from '../model/infos-questionnaire';
-import { get } from '../services/storage.service';
+import { get, remove } from '../services/storage.service';
 
 @Component({
   selector: 'app-user-info',
@@ -31,36 +33,42 @@ export class UserInfoPage implements OnInit{
   progressionTotale: number;
   quizReussite: number;
   quizEchec: number;
-  discProgression = {
-    progression : 0,
-    quizReussite: 0,
-    quizEchec: 0
-  };
-  discTitleDone = [
+  quizAbandonne: number;
+  discTitleDone: [
     {
-      title: 'Dominance',
-      numberQuizzDone: 0
+      title: string,
+      numberQuizzDone: number
     },
     {
-      title: 'Influence',
-      numberQuizzDone: 0
+      title: string,
+      numberQuizzDone: number
     },
     {
-      title: 'Stabilité',
-      numberQuizzDone: 0
+      title: string,
+      numberQuizzDone: number
     },
     {
-      title: 'Conformité',
-      numberQuizzDone: 0
+      title: string,
+      numberQuizzDone: number
     }
   ];
+
+  discProgression: {
+    progression: number,
+    quizReussite: number,
+    quizEchec: number,
+    quizAbandonne: number
+  };
+
   remarqueNombreVictoireDefaite: string;
   remarqueRepartition: string;
   remarqueDominance: string;
   remarqueInfluence: string;
   remarqueStabilite: string;
   remarqueConformite: string;
-  constructor() {
+
+  constructor(public alertController: AlertController, public loadingController: LoadingController,
+              public toastController: ToastController, private router: Router) {
     this.numberDominanceQuiz = 0;
     this.numberInfluenceQuiz = 0;
     this.numberStabiliteQuiz = 0;
@@ -72,12 +80,37 @@ export class UserInfoPage implements OnInit{
     this.progressionTotale = 0;
     this.quizReussite = 0;
     this.quizEchec = 0;
+    this.quizAbandonne = 0;
     this.remarqueNombreVictoireDefaite = '';
     this.remarqueRepartition = '';
     this.remarqueDominance = '';
     this.remarqueInfluence = '';
     this.remarqueStabilite = '';
     this.remarqueConformite = '';
+    this.discProgression = {
+      progression : 0,
+      quizReussite: 0,
+      quizEchec: 0,
+      quizAbandonne: 0
+    };
+    this.discTitleDone = [
+      {
+        title: 'Dominance',
+        numberQuizzDone: 0
+      },
+      {
+        title: 'Influence',
+        numberQuizzDone: 0
+      },
+      {
+        title: 'Stabilité',
+        numberQuizzDone: 0
+      },
+      {
+        title: 'Conformité',
+        numberQuizzDone: 0
+      }
+    ];
   }
 
   ngOnInit(): void {
@@ -99,9 +132,10 @@ export class UserInfoPage implements OnInit{
       if (value) {
         this.discProgression = value;
       }
-      this.progressionTotale = this.discProgression.progression;
-      this.quizReussite = this.discProgression.quizReussite;
-      this.quizEchec = this.discProgression.quizEchec;
+      this.progressionTotale = this.discProgression.progression ? this.discProgression.progression : 0;
+      this.quizReussite = this.discProgression.quizReussite ? this.discProgression.quizReussite : 0;
+      this.quizEchec = this.discProgression.quizEchec ? this.discProgression.quizEchec : 0;
+      this.quizAbandonne = this.discProgression.quizAbandonne ? this.discProgression.quizAbandonne : 0;
       this.genererRemarquesProgression();
     });
     get('infos-Dominance').then(value => { if (value){ this.infosDominanceQuiz = value; } this.createBarChartDominance(); });
@@ -282,8 +316,8 @@ export class UserInfoPage implements OnInit{
             this.numberStabiliteQuiz,
             this.numberConformiteQuiz
           ],
-          backgroundColor: ['red', 'yellow', 'green', 'blue'],
-          borderColor: ['red', 'yellow', 'green', 'blue'],
+          backgroundColor: ['#c0392b', '#f1c40f', '#27ae60', '#2980b9'],
+          borderColor: ['#c0392b', '#f1c40f', '#27ae60', '#2980b9'],
           borderWidth: 1
         }]
       }
@@ -310,4 +344,105 @@ export class UserInfoPage implements OnInit{
     this.remarqueStabilite = '';
     this.remarqueConformite = '';
   }*/
+
+
+
+  async reinitAllContents(event: any) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Réinitaliser contenu',
+      message: 'Voulez-vous vraiment tout supprimer ?',
+      buttons: [
+        {
+          text: 'Annuler',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {}
+        }, {
+          text: 'Continuer',
+          handler: () => {
+            this.reinit();
+            this.presentLoading(event);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+
+  async presentLoading(event: any) {
+    const loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: 'Suppression en cours...',
+      duration: 1000
+    });
+    await loading.present();
+    const { role, data } = await loading.onDidDismiss();
+    this.presentToast();
+    this.router.navigate(['/tabs/disc']);
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Les informations ont été supprimés avec succès.',
+      duration: 2000
+    });
+    toast.present();
+  }
+
+  /**
+   * Méthode de réinitialisation complète des données
+   */
+  reinit() {
+    this.numberDominanceQuiz = 0;
+    this.numberInfluenceQuiz = 0;
+    this.numberStabiliteQuiz = 0;
+    this.numberConformiteQuiz = 0;
+    this.infosDominanceQuiz = new InfosQuestionnaire();
+    this.infosInfluenceQuiz = new InfosQuestionnaire();
+    this.infosStabiliteQuiz = new InfosQuestionnaire();
+    this.infosConformiteQuiz = new InfosQuestionnaire();
+    this.progressionTotale = 0;
+    this.quizReussite = 0;
+    this.quizEchec = 0;
+    this.quizAbandonne = 0;
+    this.remarqueNombreVictoireDefaite = '';
+    this.remarqueRepartition = '';
+    this.remarqueDominance = '';
+    this.remarqueInfluence = '';
+    this.remarqueStabilite = '';
+    this.remarqueConformite = '';
+    this.discProgression = {
+      progression : 0,
+      quizReussite: 0,
+      quizEchec: 0,
+      quizAbandonne: 0
+    };
+    this.discTitleDone = [
+      {
+        title: 'Dominance',
+        numberQuizzDone: 0
+      },
+      {
+        title: 'Influence',
+        numberQuizzDone: 0
+      },
+      {
+        title: 'Stabilité',
+        numberQuizzDone: 0
+      },
+      {
+        title: 'Conformité',
+        numberQuizzDone: 0
+      }
+    ];
+    remove('DiscTitleDone');
+    remove('infos-Dominance');
+    remove('infos-Influence');
+    remove('infos-Stabilité');
+    remove('infos-Conformité');
+    remove('discProgression');
+  }
 }
