@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { set } from '../services/storage.service';
 
 @Component({
   selector: 'app-disc',
@@ -8,7 +10,7 @@ import { NavController } from '@ionic/angular';
 })
 export class DiscPage {
 
-  constructor(private navCtrl: NavController) {}
+  constructor(private navCtrl: NavController, private router: Router) {}
 
   gotoDiscSchemaPage() {
     this.navCtrl.navigateForward('/tabs/disc/schema-disc');
@@ -27,5 +29,15 @@ export class DiscPage {
   }
   gotoConformitePage() {
     this.navCtrl.navigateForward('/tabs/disc/conformite-page');
+  }
+
+  /**
+   * Méthode permettant de flager à true la sortie de la tab quiz
+   */
+  ionViewDidLeave() {
+    if (this.router.url === '/tabs/quiz/quiz-content') {
+      this.router.navigate(['/tabs/quiz']);
+      set('tabAlreadyChange', true);
+    }
   }
 }

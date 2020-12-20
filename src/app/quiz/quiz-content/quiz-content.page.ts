@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IonSlides } from '@ionic/angular';
 import * as disc from '../../data/disc.json';
@@ -8,6 +8,7 @@ import { DiscRaw } from 'src/app/model/disc-raw';
 import { InfosQuestionnaire } from 'src/app/model/infos-questionnaire';
 import { get, set } from 'src/app/services/storage.service';
 import { AlertController } from '@ionic/angular';
+import { DiscProgression } from 'src/app/model/disc-progression';
 
 @Component({
   selector: 'app-quiz-content',
@@ -37,13 +38,12 @@ export class QuizContentPage implements OnInit {
   // Structure d'information pour les infos utilisateurs
   infosQuestionnaire: InfosQuestionnaire;
 
-  discProgression: {
-    progression: number,
-    quizReussite: number,
-    quizEchec: number,
-    quizAbandonne: number
-  };
+  discProgression: DiscProgression;
 
+  progression: number;
+  quizzReussite: number;
+  quizEchec: number;
+  quizAbandonne: number;
   flagLastPage: boolean; // flag permettant de détecter si on est sur le dernier slide
   constructor(private route: ActivatedRoute, private router: Router, public alertController: AlertController) {
     this.disc = [];
@@ -51,12 +51,7 @@ export class QuizContentPage implements OnInit {
     this.discRaw = new DiscRaw();
     this.scoreTotal = 0;
     this.infosQuestionnaire = new InfosQuestionnaire();
-    this.discProgression = {
-      progression:  0,
-      quizReussite: 0,
-      quizEchec: 0,
-      quizAbandonne: 0
-    };
+    this.discProgression = new DiscProgression();
   }
 
   ngOnInit(): void {
@@ -436,12 +431,12 @@ export class QuizContentPage implements OnInit {
   }
 
 
-  recommencer(){
+  terminer(){
     this.discRaw = new DiscRaw();
     this.scoreTotal = 0;
     this.initialiserQuiz();
     this.initialiserInfosUtilisateurQuiz();
-    this.slides.slideTo(0);
+    this.router.navigate(['/tabs/quiz']);
   }
 
   private shuffle(array) {
@@ -484,6 +479,33 @@ export class QuizContentPage implements OnInit {
         this.router.navigate(['/tabs/quiz']);
       } else {
         alert.present();
+      }
+    });
+  }
+
+  /**
+   * Méthode permettant de gerer l'evenement lorque l'utilisateur sort du quiz sans le terminer
+   * en passant par les touche de tabs avec :
+   * - tabAlreadyChange : flag permettant de détecter si l'utilisateur rentre de nouveau dans la tab quiz de nouveau
+   */
+  ionViewWillLeave() {
+    this.slides.isEnd().then(value => {
+      if (value === false) {
+        get('tabAlreadyChange').then(valueTab => {
+          if (valueTab){
+            if (valueTab === false) {
+              this.discProgression.quizAbandonne++;
+              set('discProgression', this.discProgression);
+            } else {
+              set('tabAlreadyChange', false);
+            }
+          } else {
+            this.discProgression.quizAbandonne++;
+            set('discProgression', this.discProgression);
+            set('tabAlreadyChange', false);
+          }
+        });
+
       }
     });
   }

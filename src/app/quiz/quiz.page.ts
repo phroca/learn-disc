@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { NavigationExtras } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { DiscProgression } from '../model/disc-progression';
+import { DiscTitleDone } from '../model/disc-title-done';
 import { get, set } from '../services/storage.service';
 
 @Component({
@@ -41,61 +43,18 @@ export class QuizPage implements OnInit{
     }
   ];
 
-  discTitleDone: [
-    {
-      title: string,
-      numberQuizzDone: number
-    },
-    {
-      title: string,
-      numberQuizzDone: number
-    },
-    {
-      title: string,
-      numberQuizzDone: number
-    },
-    {
-      title: string,
-      numberQuizzDone: number
-    }
-  ];
+  discTitleDone: DiscTitleDone[];
 
-  discProgression: {
-    progression: number,
-    quizReussite: number,
-    quizEchec: number,
-    quizAbandonne: number
-  };
+  discProgression: DiscProgression;
 
   constructor(private navCtrl: NavController) {
-    this.discProgression = {
-      progression:  0,
-      quizReussite: 0,
-      quizEchec: 0,
-      quizAbandonne: 0
-    };
-
-    this.discTitleDone = [
-      {
-        title: 'Dominance',
-        numberQuizzDone: 0
-      },
-      {
-        title: 'Influence',
-        numberQuizzDone: 0
-      },
-      {
-        title: 'Stabilité',
-        numberQuizzDone: 0
-      },
-      {
-        title: 'Conformité',
-        numberQuizzDone: 0
-      }
-    ];
+    this.discProgression = new DiscProgression();
+    this.discTitleDone = [];
   }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ionViewDidEnter() {
     get('discProgression').then(value => {
       if (value) {
         this.discProgression = value;
@@ -107,7 +66,6 @@ export class QuizPage implements OnInit{
       }
     });
   }
-
   gotoquiz(quizTitle: string) {
     const quiz = this.quizList.find(elt => elt.title === quizTitle);
     const navigationExtras: NavigationExtras = {
@@ -120,13 +78,24 @@ export class QuizPage implements OnInit{
   }
 
   enregistrerQuizzBdd(titre: string){
-    const discElement = this.discTitleDone.find(element => element.title === titre);
-    let titlenumber: number = discElement.numberQuizzDone;
-    if (!titlenumber) {
-      titlenumber = 0;
+    let discElement;
+    if (this.discTitleDone.length !== 0) {
+      discElement = this.discTitleDone.find(element => element.title === titre);
+      if (discElement) {
+        discElement.numberQuizzDone++;
+      } else {
+        discElement = new DiscTitleDone();
+        discElement.title = titre;
+        discElement.numberQuizzDone = 1;
+        this.discTitleDone.push(discElement);
+      }
+    } else {
+      discElement = new DiscTitleDone();
+      discElement.title = titre;
+      discElement.numberQuizzDone = 1;
+      this.discTitleDone.push(discElement);
     }
-    titlenumber++;
-    discElement.numberQuizzDone = titlenumber;
+
     this.discProgression.progression++;
     set('DiscTitleDone', this.discTitleDone);
     set('discProgression', this.discProgression);

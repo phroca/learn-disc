@@ -170,3 +170,38 @@
 ion-card {
     border-radius: 15px;
 }
+
+
+/* HIDE / SHOW ANIMATION */
+
+ion-card-content {
+    opacity: 1;
+}
+
+ion-card-content.hide {
+    animation: slidein 1s;
+    opacity: 0;
+}
+
+ion-card-content.show {
+    animation: slideout 1s;
+    opacity: 1;
+}
+
+@keyframes slidein {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes slideout {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

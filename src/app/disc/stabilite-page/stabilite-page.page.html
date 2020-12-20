@@ -26,7 +26,7 @@
                     </div>
                 </ion-card-subtitle>
             </ion-card-header>
-            <ion-card-content *ngIf="visibilityPA === true">
+            <ion-card-content [ngClass]="{'hide': visibilityPA === false, 'show': visibilityPA === true }">
                 <ion-chip color="success">
                     <ion-label>Fiable</ion-label>
                 </ion-chip>
@@ -53,7 +53,7 @@
                     </div>
                 </ion-card-subtitle>
             </ion-card-header>
-            <ion-card-content *ngIf="visibilityL === true">
+            <ion-card-content [ngClass]="{'hide': visibilityL === false, 'show': visibilityL === true }">
                 <ion-chip color="success">
                     <ion-label>N’aime pas le changement</ion-label>
                 </ion-chip>
@@ -77,7 +77,7 @@
                     </div>
                 </ion-card-subtitle>
             </ion-card-header>
-            <ion-card-content *ngIf="visibilityB === true">
+            <ion-card-content [ngClass]="{'hide': visibilityB === false, 'show': visibilityB === true }">
                 <ion-chip color="success">
                     <ion-label>Régularité</ion-label>
                 </ion-chip>
@@ -95,7 +95,7 @@
                     </div>
                 </ion-card-subtitle>
             </ion-card-header>
-            <ion-card-content *ngIf="visibilityM === true">
+            <ion-card-content [ngClass]="{'hide': visibilityM === false, 'show': visibilityM === true }">
                 <ion-chip color="success">
                     <ion-label>Servir</ion-label>
                 </ion-chip>
@@ -116,7 +116,7 @@
                     </div>
                 </ion-card-subtitle>
             </ion-card-header>
-            <ion-card-content *ngIf="visibilityP === true">
+            <ion-card-content [ngClass]="{'hide': visibilityP === false, 'show': visibilityP === true }">
                 <ion-chip color="success">
                     <ion-label>Le changement</ion-label>
                 </ion-chip>
@@ -134,7 +134,7 @@
                     </div>
                 </ion-card-subtitle>
             </ion-card-header>
-            <ion-card-content *ngIf="visibilityIP === true">
+            <ion-card-content [ngClass]="{'hide': visibilityIP === false, 'show': visibilityIP === true }">
                 <ion-chip color="success">
                     <ion-label>L’impatience</ion-label>
                 </ion-chip>
@@ -155,7 +155,7 @@
                     </div>
                 </ion-card-subtitle>
             </ion-card-header>
-            <ion-card-content *ngIf="visibilitySS === true">
+            <ion-card-content [ngClass]="{'hide': visibilitySS === false, 'show': visibilitySS === true }">
                 <ion-chip color="success">
                     <ion-label>Sévère</ion-label>
                 </ion-chip>

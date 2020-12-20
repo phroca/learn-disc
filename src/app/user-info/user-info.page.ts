@@ -2,8 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { Chart } from 'chart.js';
+import { DiscProgression } from '../model/disc-progression';
+import { DiscTitleDone } from '../model/disc-title-done';
 import { InfosQuestionnaire } from '../model/infos-questionnaire';
-import { get, remove } from '../services/storage.service';
+import { get, remove, set } from '../services/storage.service';
 
 @Component({
   selector: 'app-user-info',
@@ -34,31 +36,8 @@ export class UserInfoPage implements OnInit{
   quizReussite: number;
   quizEchec: number;
   quizAbandonne: number;
-  discTitleDone: [
-    {
-      title: string,
-      numberQuizzDone: number
-    },
-    {
-      title: string,
-      numberQuizzDone: number
-    },
-    {
-      title: string,
-      numberQuizzDone: number
-    },
-    {
-      title: string,
-      numberQuizzDone: number
-    }
-  ];
-
-  discProgression: {
-    progression: number,
-    quizReussite: number,
-    quizEchec: number,
-    quizAbandonne: number
-  };
+  discTitleDone: DiscTitleDone[];
+  discProgression: DiscProgression;
 
   remarqueNombreVictoireDefaite: string;
   remarqueRepartition: string;
@@ -87,57 +66,43 @@ export class UserInfoPage implements OnInit{
     this.remarqueInfluence = '';
     this.remarqueStabilite = '';
     this.remarqueConformite = '';
-    this.discProgression = {
-      progression : 0,
-      quizReussite: 0,
-      quizEchec: 0,
-      quizAbandonne: 0
-    };
-    this.discTitleDone = [
-      {
-        title: 'Dominance',
-        numberQuizzDone: 0
-      },
-      {
-        title: 'Influence',
-        numberQuizzDone: 0
-      },
-      {
-        title: 'Stabilité',
-        numberQuizzDone: 0
-      },
-      {
-        title: 'Conformité',
-        numberQuizzDone: 0
-      }
-    ];
+    this.discProgression = new DiscProgression();
+    this.discTitleDone = [];
   }
 
   ngOnInit(): void {
+  }
+
+  ionViewWillEnter() {
+    get('discProgression').then(value => {
+      if (value) {
+        this.discProgression = value;
+      }
+      this.progressionTotale = this.discProgression.progression ?? 0;
+      this.quizReussite = this.discProgression.quizReussite ?? 0;
+      this.quizEchec = this.discProgression.quizEchec ?? 0;
+      this.quizAbandonne = this.discProgression.quizAbandonne ?? 0;
+      this.genererRemarquesProgression();
+    });
   }
 
   ionViewDidEnter() {
     get('DiscTitleDone').then ( value => {
       if (value) {
         this.discTitleDone = value;
-        this.numberDominanceQuiz = this.discTitleDone.find( element => element.title === 'Dominance').numberQuizzDone;
-        this.numberInfluenceQuiz = this.discTitleDone.find( element => element.title === 'Influence').numberQuizzDone;
-        this.numberStabiliteQuiz = this.discTitleDone.find( element => element.title === 'Stabilité').numberQuizzDone;
-        this.numberConformiteQuiz = this.discTitleDone.find( element => element.title === 'Conformité').numberQuizzDone;
+        this.numberDominanceQuiz = this.discTitleDone.find( element => element.title === 'Dominance') ?
+         this.discTitleDone.find( element => element.title === 'Dominance').numberQuizzDone : 0;
+        this.numberInfluenceQuiz = this.discTitleDone.find( element => element.title === 'Influence') ?
+        this.discTitleDone.find( element => element.title === 'Influence').numberQuizzDone : 0;
+        this.numberStabiliteQuiz = this.discTitleDone.find( element => element.title === 'Stabilité') ?
+        this.discTitleDone.find( element => element.title === 'Stabilité').numberQuizzDone : 0;
+        this.numberConformiteQuiz = this.discTitleDone.find( element => element.title === 'Conformité') ?
+        this.discTitleDone.find( element => element.title === 'Conformité').numberQuizzDone : 0;
       }
       this.createPieChart();
       this.genererRemarquesRepartition();
     });
-    get('discProgression').then(value => {
-      if (value) {
-        this.discProgression = value;
-      }
-      this.progressionTotale = this.discProgression.progression ? this.discProgression.progression : 0;
-      this.quizReussite = this.discProgression.quizReussite ? this.discProgression.quizReussite : 0;
-      this.quizEchec = this.discProgression.quizEchec ? this.discProgression.quizEchec : 0;
-      this.quizAbandonne = this.discProgression.quizAbandonne ? this.discProgression.quizAbandonne : 0;
-      this.genererRemarquesProgression();
-    });
+
     get('infos-Dominance').then(value => { if (value){ this.infosDominanceQuiz = value; } this.createBarChartDominance(); });
     get('infos-Influence').then(value => { if (value){ this.infosInfluenceQuiz = value;  } this.createBarChartInfluence(); });
     get('infos-Stabilité').then(value => { if (value){ this.infosStabiliteQuiz = value;  } this.createBarChartStabilite(); });
@@ -444,5 +409,15 @@ export class UserInfoPage implements OnInit{
     remove('infos-Stabilité');
     remove('infos-Conformité');
     remove('discProgression');
+  }
+
+  /**
+   * Méthode permettant de flager à true la sortie de la tab quiz
+   */
+  ionViewDidLeave() {
+    if (this.router.url === '/tabs/quiz/quiz-content') {
+      this.router.navigate(['/tabs/quiz']);
+      set('tabAlreadyChange', true);
+    }
   }
 }
