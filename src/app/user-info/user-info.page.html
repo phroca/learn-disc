@@ -26,34 +26,55 @@
             </ion-col>
         </ion-row>
         <ion-row>
-            <ion-col>
-                <ion-card class="small-margin quiz-reussi-bg">
-                    <ion-card-header>
-                        <ion-card-subtitle class="font-white">Quiz réussis</ion-card-subtitle>
-                        <ion-card-title class="font-white">{{quizReussite}}</ion-card-title>
-                    </ion-card-header>
-                </ion-card>
-            </ion-col>
-            <ion-col>
-                <ion-card class="small-margin quiz-echoue-bg">
-                    <ion-card-header>
-                        <ion-card-subtitle class="font-white">Quiz échoués</ion-card-subtitle>
-                        <ion-card-title class="font-white">{{quizEchec}}</ion-card-title>
-                    </ion-card-header>
-                </ion-card>
+            <ion-col style="margin-inline: 16px; padding-bottom: .5em; padding-top: 2em;text-align: center">
+                <span style="font-size: 20px;"><strong>Résultats</strong></span><br>
+                <span style="font-size: 15px;">des quiz</span>
             </ion-col>
         </ion-row>
-        <ion-row>
-            <ion-col>
-                <ion-card class="small-margin quiz-abandonne-bg">
-                    <ion-card-header>
-                        <ion-card-subtitle class="font-white">Quiz abandonnés</ion-card-subtitle>
-                        <ion-card-title class="font-white">{{quizAbandonne}}</ion-card-title>
-                    </ion-card-header>
-                </ion-card>
-            </ion-col>
-        </ion-row>
-
+        <ion-slides pager="false" [options]="slideOpts">
+            <ion-slide>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col>
+                            <ion-card class="small-margin quiz-reussi-bg">
+                                <ion-card-header class="height-card-ui">
+                                    <ion-card-subtitle class="font-white">Quiz réussis</ion-card-subtitle>
+                                    <ion-card-title class="font-white">{{quizReussite}}</ion-card-title>
+                                </ion-card-header>
+                            </ion-card>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-slide>
+            <ion-slide>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col>
+                            <ion-card class="small-margin quiz-echoue-bg">
+                                <ion-card-header class="height-card-ui">
+                                    <ion-card-subtitle class="font-white">Quiz échoués</ion-card-subtitle>
+                                    <ion-card-title class="font-white">{{quizEchec}}</ion-card-title>
+                                </ion-card-header>
+                            </ion-card>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-slide>
+            <ion-slide>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col>
+                            <ion-card class="small-margin quiz-abandonne-bg">
+                                <ion-card-header class="height-card-ui">
+                                    <ion-card-subtitle class="font-white">Quiz abandonnés</ion-card-subtitle>
+                                    <ion-card-title class="font-white">{{quizAbandonne}}</ion-card-title>
+                                </ion-card-header>
+                            </ion-card>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-slide>
+        </ion-slides>
         <ion-row>
             <ion-col>
                 <ion-card class="small-margin">
@@ -66,43 +87,71 @@
                 </ion-card>
             </ion-col>
         </ion-row>
+        <ion-row>
+            <ion-col style="margin-inline: 16px; padding-bottom: .5em;padding-top: 2em;text-align: center">
+                <span style="font-size: 20px;"><strong>Progression</strong></span><br>
+                <span style="font-size: 15px;">de chaque couleur</span>
+            </ion-col>
+        </ion-row>
+        <ion-slides pager="false" [options]="slideOpts">
+            <ion-slide>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col>
+                            <ion-card class="small-margin">
+                                <ion-card-header class="height-card-ui" color="rouge">
+                                    <ion-card-subtitle>Quiz Dominance effectués</ion-card-subtitle>
+                                    <ion-card-title>{{numberDominanceQuiz}}</ion-card-title>
+                                </ion-card-header>
+                            </ion-card>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-slide>
+            <ion-slide>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col>
+                            <ion-card class="small-margin">
+                                <ion-card-header class="height-card-ui" color="jaune">
+                                    <ion-card-subtitle>Quiz Influence effectués</ion-card-subtitle>
+                                    <ion-card-title>{{numberInfluenceQuiz}}</ion-card-title>
+                                </ion-card-header>
+                            </ion-card>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-slide>
+            <ion-slide>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col>
+                            <ion-card class="small-margin">
+                                <ion-card-header class="height-card-ui" color="vert">
+                                    <ion-card-subtitle>Quiz Stabilité effectués</ion-card-subtitle>
+                                    <ion-card-title>{{numberStabiliteQuiz}}</ion-card-title>
+                                </ion-card-header>
+                            </ion-card>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-slide>
+            <ion-slide>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col>
+                            <ion-card class="small-margin">
+                                <ion-card-header class="height-card-ui" color="bleu">
+                                    <ion-card-subtitle>Quiz Conformité effectués</ion-card-subtitle>
+                                    <ion-card-title>{{numberConformiteQuiz}}</ion-card-title>
+                                </ion-card-header>
+                            </ion-card>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-slide>
+        </ion-slides>
 
-        <ion-row>
-            <ion-col>
-                <ion-card class="small-margin">
-                    <ion-card-header color="rouge">
-                        <ion-card-subtitle>Dominance</ion-card-subtitle>
-                        <ion-card-title>{{numberDominanceQuiz}}</ion-card-title>
-                    </ion-card-header>
-                </ion-card>
-            </ion-col>
-            <ion-col>
-                <ion-card class="small-margin">
-                    <ion-card-header color="jaune">
-                        <ion-card-subtitle>Influence</ion-card-subtitle>
-                        <ion-card-title>{{numberInfluenceQuiz}}</ion-card-title>
-                    </ion-card-header>
-                </ion-card>
-            </ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col>
-                <ion-card class="small-margin">
-                    <ion-card-header color="vert">
-                        <ion-card-subtitle>Stabilité</ion-card-subtitle>
-                        <ion-card-title>{{numberStabiliteQuiz}}</ion-card-title>
-                    </ion-card-header>
-                </ion-card>
-            </ion-col>
-            <ion-col>
-                <ion-card class="small-margin">
-                    <ion-card-header color="bleu">
-                        <ion-card-subtitle>Conformité</ion-card-subtitle>
-                        <ion-card-title>{{numberConformiteQuiz}}</ion-card-title>
-                    </ion-card-header>
-                </ion-card>
-            </ion-col>
-        </ion-row>
         <ion-row>
             <ion-col>
                 <ion-card class="small-margin">

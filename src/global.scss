@@ -158,8 +158,7 @@
 }
 
 .small-margin {
-    margin-top: 5px !important;
-    margin-bottom: 5px!important;
+    margin: 0 !important;
 }
 
 .small-padding {
@@ -168,7 +167,7 @@
 }
 
 ion-card {
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
 
@@ -204,4 +203,10 @@ ion-card-content.show {
     to {
         opacity: 1;
     }
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

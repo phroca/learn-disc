@@ -46,6 +46,14 @@ export class UserInfoPage implements OnInit{
   remarqueStabilite: string;
   remarqueConformite: string;
 
+  // Paramètres optionnelles pour le composant slider
+  slideOpts = {
+    initialSlide: 0,
+    speed: 400,
+    autoHeight: true,
+    slidesPerView: 'auto'
+  };
+
   constructor(public alertController: AlertController, public loadingController: LoadingController,
               public toastController: ToastController, private router: Router) {
     this.numberDominanceQuiz = 0;
