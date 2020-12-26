@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { MenuController, NavController } from '@ionic/angular';
 import { set } from '../services/storage.service';
 
 @Component({
@@ -10,7 +10,12 @@ import { set } from '../services/storage.service';
 })
 export class DiscPage {
 
-  constructor(private navCtrl: NavController, private router: Router) {}
+  constructor(private navCtrl: NavController, private router: Router, private menu: MenuController) {}
+
+  openFirst() {
+    this.menu.enable(true, 'first');
+    this.menu.open('first');
+  }
 
   gotoDiscSchemaPage() {
     this.navCtrl.navigateForward('/tabs/disc/schema-disc');

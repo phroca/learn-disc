@@ -120,7 +120,7 @@ export class UserInfoPage implements OnInit{
   createBarChartDominance() {
     // Repartition des reponses pour le questionnaire sur la Dominance
     this.hrzBarsD = new Chart(this.barChartDominance.nativeElement, {
-      type: 'horizontalBar',
+      type: 'bar',
       data: {
         labels: ['Point d\'appui', 'Limites', 'Besoins', 'Moteurs', 'Peur', 'Irrité par', 'Sous stress'],
         datasets: [{
@@ -154,7 +154,7 @@ export class UserInfoPage implements OnInit{
       },
       options: {
         scales: {
-          xAxes: [{
+          yAxes: [{
             ticks: {
               beginAtZero: true
             }
@@ -166,7 +166,7 @@ export class UserInfoPage implements OnInit{
   createBarChartInfluence() {
     // Repartition des reponses pour le questionnaire sur la Influence
     this.hrzBarsI = new Chart(this.barChartInfluence.nativeElement, {
-      type: 'horizontalBar',
+      type: 'bar',
       data: {
         labels: ['Point d\'appui', 'Limites', 'Besoins', 'Moteurs', 'Peur', 'Irrité par', 'Sous stress'],
         datasets: [{
@@ -198,12 +198,21 @@ export class UserInfoPage implements OnInit{
           borderWidth: 1
         }]
       },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
     });
   }
   createBarChartStabilite() {
     // Repartition des reponses pour le questionnaire sur la Stabilité
     this.hrzBarsS = new Chart(this.barChartStabilite.nativeElement, {
-      type: 'horizontalBar',
+      type: 'bar',
       data: {
         labels: ['Point d\'appui', 'Limites', 'Besoins', 'Moteurs', 'Peur', 'Irrité par', 'Sous stress'],
         datasets: [{
@@ -235,12 +244,21 @@ export class UserInfoPage implements OnInit{
           borderWidth: 1
         }]
       },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
     });
   }
   createBarChartConformite() {
     // Repartition des reponses pour le questionnaire sur la Stabilité
     this.hrzBarsC = new Chart(this.barChartConformite.nativeElement, {
-      type: 'horizontalBar',
+      type: 'bar',
       data: {
         labels: ['Point d\'appui', 'Limites', 'Besoins', 'Moteurs', 'Peur', 'Irrité par', 'Sous stress'],
         datasets: [{
@@ -272,6 +290,15 @@ export class UserInfoPage implements OnInit{
           borderWidth: 1
         }]
       },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
     });
   }
 
@@ -360,6 +387,7 @@ export class UserInfoPage implements OnInit{
   async presentToast() {
     const toast = await this.toastController.create({
       message: 'Les informations ont été supprimés avec succès.',
+      position: 'top',
       duration: 2000
     });
     toast.present();

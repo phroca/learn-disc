@@ -1,6 +1,14 @@
+<ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-menu-button autoHide="true">
+            <ion-icon name="person-outline" color="dark"></ion-icon>
+        </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Accueil</ion-title>
+</ion-toolbar>
 <ion-content [fullscreen]="true">
     <ion-grid>
-        <ion-row style="padding-bottom: 2em;">
+        <ion-row style="padding-bottom: 1em;">
             <ion-col class="center">
                 <img src="../../assets/img/welcome-v2-thin.png" alt="disc" style="border-radius: 25px;">
             </ion-col>
@@ -15,19 +23,21 @@
     <ion-grid>
         <ion-row>
             <ion-col>
-                <ion-card class="small-margin no-box-shadow disc-bg" (click)="gotoDiscSchemaPage()">
+                <ion-card class="small-margin disc-bg" (click)="gotoDiscSchemaPage()">
                     <div>
                         <ion-row>
                             <ion-col>
                                 <ion-card-header class="small-padding">
-                                    <ion-card-subtitle>DISC</ion-card-subtitle>
+                                    <ion-card-title style="color: #666666;">DISC</ion-card-title>
+                                    <ion-card-subtitle>Comprendre le DISC</ion-card-subtitle>
                                 </ion-card-header>
                                 <ion-card-content class="small-padding font-content">
-                                    Voir le schéma du DISC
+                                    Comprendre la définition et voir le schema du DISC.
                                 </ion-card-content>
                             </ion-col>
                         </ion-row>
                     </div>
+                    <ion-ripple-effect></ion-ripple-effect>
                 </ion-card>
             </ion-col>
         </ion-row>
@@ -38,10 +48,11 @@
                         <ion-row>
                             <ion-col>
                                 <ion-card-header class="small-padding font-white">
-                                    <ion-card-subtitle class="font-white">Dominance</ion-card-subtitle>
+                                    <ion-card-title class="font-white">Dominance</ion-card-title>
+                                    <ion-card-subtitle class="font-white">Comprendre la dominance.</ion-card-subtitle>
                                 </ion-card-header>
                                 <ion-card-content class="small-padding font-content font-white">
-                                    Comprendre la dominance.
+                                    Comprendre la dominance avec ses différentes caractéristiques.
                                 </ion-card-content>
                             </ion-col>
                         </ion-row>
@@ -56,10 +67,11 @@
                         <ion-row>
                             <ion-col>
                                 <ion-card-header class="small-padding">
-                                    <ion-card-subtitle class="font-white">Influence</ion-card-subtitle>
+                                    <ion-card-title class="font-white">Influence</ion-card-title>
+                                    <ion-card-subtitle class="font-white">Comprendre l'influence.</ion-card-subtitle>
                                 </ion-card-header>
                                 <ion-card-content class="small-padding font-content font-white">
-                                    Comprendre l'influence.
+                                    Comprendre l'influence avec ses différentes caractéristiques.
                                 </ion-card-content>
                             </ion-col>
                         </ion-row>
@@ -74,10 +86,11 @@
                         <ion-row>
                             <ion-col>
                                 <ion-card-header class="small-padding">
-                                    <ion-card-subtitle class="font-white">Stabilité</ion-card-subtitle>
+                                    <ion-card-title class="font-white">Stabilité</ion-card-title>
+                                    <ion-card-subtitle class="font-white">Comprendre la stabilité.</ion-card-subtitle>
                                 </ion-card-header>
                                 <ion-card-content class="small-padding font-content font-white">
-                                    Comprendre la stabilité.
+                                    Comprendre la stabilité avec ses différentes caractéristiques.
                                 </ion-card-content>
                             </ion-col>
                         </ion-row>
@@ -92,10 +105,11 @@
                         <ion-row>
                             <ion-col>
                                 <ion-card-header class="small-padding font-white">
-                                    <ion-card-subtitle class="font-white">Conformité</ion-card-subtitle>
+                                    <ion-card-title class="font-white">Conformité</ion-card-title>
+                                    <ion-card-subtitle class="font-white">Comprendre la conformité.</ion-card-subtitle>
                                 </ion-card-header>
                                 <ion-card-content class="small-padding font-content font-white">
-                                    Comprendre la conformité.
+                                    Comprendre la conformité avec ses différentes caractéristiques.
                                 </ion-card-content>
                             </ion-col>
                         </ion-row>

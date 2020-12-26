@@ -1,6 +1,14 @@
+<ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-menu-button autoHide="true">
+            <ion-icon name="person-outline" color="dark"></ion-icon>
+        </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Quiz</ion-title>
+</ion-toolbar>
 <ion-content [fullscreen]="true">
     <ion-grid>
-        <ion-row style="padding-bottom: 2em;">
+        <ion-row style="padding-bottom: 1em;">
             <ion-col class="center">
                 <img src="../../assets/img/quiz-v2.png" alt="disc" style="border-radius: 10px;">
             </ion-col>
@@ -18,18 +26,14 @@
                 <ion-card class="small-margin {{quiz.cssbg}}">
                     <div>
                         <ion-row>
-                            <ion-col size="10">
+                            <ion-col>
                                 <ion-card-header class="small-padding">
-                                    <ion-card-subtitle class="font-white">{{quiz.title}}</ion-card-subtitle>
+                                    <ion-card-title class="font-white">{{quiz.title}}</ion-card-title>
+                                    <ion-card-subtitle class="font-white"> Testez la partie {{quiz.title}}</ion-card-subtitle>
                                 </ion-card-header>
                                 <ion-card-content class="small-padding font-content font-white">
-                                    Quiz : {{quiz.title}}
+                                    Vérifiez vos connaissances en validant le quiz.
                                 </ion-card-content>
-                            </ion-col>
-                            <ion-col size="2">
-                                <div style="text-align: right;">
-                                    <ion-icon name="{{quiz.icon}}" slot="end" class="font-white" style="font-size: 50px;padding-top: 5px;"></ion-icon>
-                                </div>
                             </ion-col>
                         </ion-row>
                     </div>

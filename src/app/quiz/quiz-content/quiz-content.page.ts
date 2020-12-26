@@ -45,6 +45,7 @@ export class QuizContentPage implements OnInit {
   quizEchec: number;
   quizAbandonne: number;
   flagLastPage: boolean; // flag permettant de détecter si on est sur le dernier slide
+  tabs: any;
   constructor(private route: ActivatedRoute, private router: Router, public alertController: AlertController) {
     this.disc = [];
     this.discTemporaire = new Disc();
@@ -52,6 +53,7 @@ export class QuizContentPage implements OnInit {
     this.scoreTotal = 0;
     this.infosQuestionnaire = new InfosQuestionnaire();
     this.discProgression = new DiscProgression();
+    this.tabs = document.querySelectorAll('ion-tab-bar');
   }
 
   ngOnInit(): void {
@@ -489,24 +491,14 @@ export class QuizContentPage implements OnInit {
    * - tabAlreadyChange : flag permettant de détecter si l'utilisateur rentre de nouveau dans la tab quiz de nouveau
    */
   ionViewWillLeave() {
-    this.slides.isEnd().then(value => {
-      if (value === false) {
-        get('tabAlreadyChange').then(valueTab => {
-          if (valueTab){
-            if (valueTab === false) {
-              this.discProgression.quizAbandonne++;
-              set('discProgression', this.discProgression);
-            } else {
-              set('tabAlreadyChange', false);
-            }
-          } else {
-            this.discProgression.quizAbandonne++;
-            set('discProgression', this.discProgression);
-            set('tabAlreadyChange', false);
-          }
-        });
+    Object.keys(this.tabs).map((key) => {
+      this.tabs[key].style.display = 'flex';
+    });
+  }
 
-      }
+  ionViewWillEnter() {
+    Object.keys(this.tabs).map((key) => {
+      this.tabs[key].style.display = 'none';
     });
   }
 }

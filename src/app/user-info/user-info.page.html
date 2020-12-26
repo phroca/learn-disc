@@ -1,4 +1,10 @@
 <ion-toolbar style="--border-width: 0 !important;">
+    <ion-buttons slot="start">
+        <ion-menu-button autoHide="true">
+            <ion-icon name="person-outline" color="dark"></ion-icon>
+        </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Progression</ion-title>
     <ion-buttons slot="end">
         <ion-button (click)="reinitAllContents($event)" color="rouge">
             <ion-icon name="trash-outline"></ion-icon>
@@ -26,7 +32,7 @@
             </ion-col>
         </ion-row>
         <ion-row>
-            <ion-col style="margin-inline: 16px; padding-bottom: .5em; padding-top: 2em;text-align: center">
+            <ion-col style="margin-inline: 16px; padding-bottom: .5em; padding-top: 1em;text-align: center">
                 <span style="font-size: 20px;"><strong>Résultats</strong></span><br>
                 <span style="font-size: 15px;">des quiz</span>
             </ion-col>
@@ -76,24 +82,12 @@
             </ion-slide>
         </ion-slides>
         <ion-row>
-            <ion-col>
-                <ion-card class="small-margin">
-                    <ion-card-header>
-                        <ion-card-subtitle>Répartition</ion-card-subtitle>
-                    </ion-card-header>
-                    <ion-card-content>
-                        <canvas height="516" #pieChart></canvas>
-                    </ion-card-content>
-                </ion-card>
-            </ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col style="margin-inline: 16px; padding-bottom: .5em;padding-top: 2em;text-align: center">
+            <ion-col style="margin-inline: 16px; padding-bottom: .5em;padding-top: 1em;text-align: center">
                 <span style="font-size: 20px;"><strong>Progression</strong></span><br>
                 <span style="font-size: 15px;">de chaque couleur</span>
             </ion-col>
         </ion-row>
-        <ion-slides pager="false" [options]="slideOpts">
+        <ion-slides pager="false" [options]="slideOpts" style="padding-bottom: .5em;">
             <ion-slide>
                 <ion-grid>
                     <ion-row>
@@ -151,7 +145,18 @@
                 </ion-grid>
             </ion-slide>
         </ion-slides>
-
+        <ion-row>
+            <ion-col>
+                <ion-card class="small-margin">
+                    <ion-card-header>
+                        <ion-card-subtitle>Répartition</ion-card-subtitle>
+                    </ion-card-header>
+                    <ion-card-content>
+                        <canvas height="516" #pieChart></canvas>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
         <ion-row>
             <ion-col>
                 <ion-card class="small-margin">
@@ -163,6 +168,8 @@
                     </ion-card-content>
                 </ion-card>
             </ion-col>
+        </ion-row>
+        <ion-row>
             <ion-col>
                 <ion-card class="small-margin">
                     <ion-card-header>
@@ -185,6 +192,8 @@
                     </ion-card-content>
                 </ion-card>
             </ion-col>
+        </ion-row>
+        <ion-row>
             <ion-col>
                 <ion-card class="small-margin">
                     <ion-card-header>
