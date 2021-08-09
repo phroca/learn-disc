@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { SchemaDiscPage } from './schema-disc.page';
@@ -7,7 +7,7 @@ describe('SchemaDiscPage', () => {
   let component: SchemaDiscPage;
   let fixture: ComponentFixture<SchemaDiscPage>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ SchemaDiscPage ],
       imports: [IonicModule.forRoot()]
